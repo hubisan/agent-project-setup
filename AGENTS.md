@@ -11,3 +11,7 @@ This public repository develops provider-neutral project guidance. It is not a t
 - KVP findings are scoped to session, project or setup. Apply generalised changes to this repo only after permission and sensitive-data scrubbing.
 - Keep private and business data outside this public repository. Report proposed, saved, committed and pushed states separately.
 - Changes to instructions, skills and docs require focused review.
+
+## Language
+
+Write agent instructions, skill definitions, setup docs and tests in English. Speak to the user in their preferred language. Preserve the existing language, terminology and style of each project's content. Never translate project content without an explicit request. Keep the original German v2 specification and decision register unchanged as historical source documents.
