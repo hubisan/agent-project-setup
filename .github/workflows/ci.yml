@@ -1,0 +1,17 @@
+name: Validate project setup
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check skills
+        run: python3 tests/check_skills.py
+      - name: Check specification baseline
+        run: python3 tests/check_specs.py
