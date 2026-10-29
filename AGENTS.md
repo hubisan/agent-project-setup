@@ -3,6 +3,7 @@
 This public repository develops provider-neutral project guidance. It is not a target user project.
 
 - Start with `README.md`, then `docs/phases.md` when routing, or `docs/skills.md` when planning/reviewing a skill.
+- All custom project skills use the `aps-` prefix; keep names consistent across folder, frontmatter and references. Current catalog entries are proposals until accepted.
 - **Develop one skill at a time.** Its GitHub issue defines cases, contracts and acceptance tests. A candidate in the catalog is not an installed skill.
 - Store accepted canonical skills under `.agents/skills/`; adapter/mirror output must remain derived. Preserve project-owned `AGENTS.md` and existing installed skills.
 - A project may remain research, planning or wiki work. Choose an application only if the user wants that direction.
