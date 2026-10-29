@@ -62,6 +62,30 @@ A short `SKILL.md` is **not** acceptance evidence. No project skill is currently
 - In an interactive host, preselection is a suggestion, never assumed consent; in CLI/text contexts, show an equivalent legible questionnaire.
 - Preserve nuanced replies (e.g. “B, with this change”) and ask only the current independent question frontier.
 
+### Decision autonomy and question discipline
+
+**Goal: remove uncertainty with the fewest valuable questions, not conduct the longest interview.**
+
+Before asking a question, check whether it is already answered in the project, can be verified by available evidence, or can be resolved through a safe and reasonable default. In those cases, **do the work** instead of presenting A/B/C options merely to obtain agreement with the agent's recommendation.
+
+| Decision type | Behaviour |
+| --- | --- |
+| Established fact, documented choice, or verifiable information | Reuse or research it; do not ask the user to reproduce facts the agent can find. |
+| Clear, low-risk and easily reversible implementation/detail choice | Decide autonomously, continue, and log it briefly only if useful. |
+| Several viable but low-stakes defaults | Choose and briefly explain the reason; make it easy for the user to correct later. |
+| Goal, user preference, domain policy, materially different trade-offs, or consequential/irreversible action | Ask a **focused** question, show meaningful options and explain the recommendation; obtain necessary permission before the action. |
+| Missing evidence or uncertain assumptions | Research when possible; otherwise disclose the assumption and ask only if it materially affects the outcome. |
+
+- **Ask only questions whose answers would materially change the outcome, priority, safety or direction.** Do not ask because an interview template has an empty field.
+- Ask a small set of independent, high-impact questions in each round; drill into details only if they block progress or the user explicitly requests exhaustive questioning.
+- After each answer, update the decision frontier: remove resolved questions, infer only defensible consequences and continue useful work. Never ask the same question again without relevant new evidence.
+- If the user repeatedly accepts the recommendation, reassess whether similar routine questions should instead be decided by the agent; this is a signal of excessive questioning, **not** blanket authorisation to override user-owned decisions.
+- Stop clarification once the current task has enough information to progress safely; do **not** require every conceivable branch to be explored. Record optional unresolved points as follow-up only when relevant.
+- Do not confuse autonomous **reasoning or choosing a reversible default** with permission to write, publish, buy, delete or perform another consequential action. Respect the target repository's established permission policy.
+- For actual user-owned questions, keep the structured question presentation and a justified recommendation. A preselected answer is **never** evidence of user consent.
+
+**Validation scenarios:** automatic selection of an obvious file naming convention without asking; reusing a documented stakeholder fact rather than questioning the user; asking the user to decide whether the project needs an application; stopping a detailed interview after the current requirements are sufficiently clear; reporting instead of guessing when source facts cannot be verified.
+
 ## Continuous improvement contract
 
 `aps-improve` supports:
