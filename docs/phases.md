@@ -29,3 +29,7 @@ Respond with a brief orientation: where the project stands, why this skill fits,
 ## Pilot scenario
 
 The meal planner starts with recipes and planning ideas, may work using AI plus files or existing tools, and only later might need an application. Apply discovery and option-shaping before any coding workflow. Preserve original notes and cite their source.
+
+## Inspiration boundary
+
+AIHero motivates phase-sensitive coaching and concise, verifiable outcomes. This setup **does not copy or install AIHero skills**: its own project workflows are derived from user needs, are usable without software development, and stay independent of any upstream skill package.
