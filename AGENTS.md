@@ -1,12 +1,13 @@
-# Project setup instructions
+# Repository instructions
 
-This repository maintains vendor-neutral project workflows and skills. The repository itself is not a sample user project.
+This public repository develops provider-neutral project guidance. It is not a target user project.
 
-- Read `README.md` for goals and `docs/phases.md` when deciding how to guide a project.
-- Skills in `.agents/skills/` are canonical; other hosts may use adapters or mirrors. Do not overwrite project-owned or coding-agent-setup files.
-- A project may stay a research, wiki, or planning project indefinitely. Do not assume a software solution.
-- Prefer a small next action over a full lifecycle ceremony. Existing decisions remain settled unless new evidence materially changes them.
-- Work with the user's existing Org or Markdown structure. Do not move source material without approval.
-- Borrow useful ideas from AIHero (phase guidance, questioning, focused research), but design original general-project workflows. Do not copy or vendor AIHero skill bodies or install its skill bundle as part of adoption.
-- Keep local/private data out of this public repository. Report what was really written, committed and pushed as separate states.
-- Changes to managed instructions or skills require review; keep Markdown concise and English.
+- Start with `README.md`, then `docs/phases.md` when routing, or `docs/skills.md` when planning/reviewing a skill.
+- **Develop one skill at a time.** Its GitHub issue defines cases, contracts and acceptance tests. A candidate in the catalog is not an installed skill.
+- Store accepted canonical skills under `.agents/skills/`; adapter/mirror output must remain derived. Preserve project-owned `AGENTS.md` and existing installed skills.
+- A project may remain research, planning or wiki work. Choose an application only if the user wants that direction.
+- Keep existing Org/Markdown source of truth and decisions. Load relevant sections rather than entire repositories.
+- AIHero is conceptual inspiration only; write original general-project instructions and do not copy or install upstream skills.
+- KVP findings are scoped to session, project or setup. Apply generalised changes to this repo only after permission and sensitive-data scrubbing.
+- Keep private and business data outside this public repository. Report proposed, saved, committed and pushed states separately.
+- Changes to instructions, skills and docs require focused review.

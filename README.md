@@ -1,16 +1,17 @@
 # agent-project-setup
 
-Provider-neutral project guidance using original skills for discovery, shaping, natural planning, reviews and handoffs. Projects do not need to become applications.
+Provider-independent AI guidance for knowledge bases, planning, research and other projects. A project does not need to become a software application.
 
-## Find your way
+## Entry points
 
-- [Phase navigation](docs/phases.md)
-- [Architecture and rollout](docs/architecture.md)
-- [Approved specification 2.0](docs/spec-v2/README.md) — complete source documents (Org and Markdown), all 121 decisions and acceptance scenarios
-- [Implementation tickets](https://github.com/hubisan/agent-project-setup/issues)
+- [Phase navigation](docs/phases.md) — select a workflow based on current need
+- [Skill catalog and quality gates](docs/skills.md) — nine **planned** skills developed **one by one**
+- [Architecture and rollout](docs/architecture.md) — optional memento and coding setup
+- [Approved design baseline v2](docs/spec-v2/README.md) — full specification, 121 decisions and 52 acceptance scenarios in Org and Markdown
+- [Implementation tickets](https://github.com/hubisan/agent-project-setup/issues) — roadmap, blockers and acceptance
 
-AIHero supplies ideas for phase-aware guidance; this project does not copy or install AIHero skills. `coding-agent-setup` remains a separately adoptable, optional engineering setup. The personal `memento` wiki is optional and not a dependency.
+**Status:** design baseline and phase map exist. **No project skills are currently approved for installation.** The six early SKILL.md drafts were withdrawn from active discovery in favour of separate reviews and tests; see [#11](https://github.com/hubisan/agent-project-setup/issues/11). The adoption installer and real user-led menu-planner pilot have not been validated.
 
-**Status:** first implementation slice in progress. A real menu-planner test will be user-led and incremental; no setup installer has been validated yet.
+AIHero supplies design ideas only; this repo does not copy, vendor or install AIHero skills. `coding-agent-setup` is a separately adoptable option only when software development is needed. Personal memento integration is optional and never a requirement of an independent project.
 
-This is a public setup repository; personal project data must remain in the respective protected repositories.
+Repository data is public; do not add personal or confidential project content.

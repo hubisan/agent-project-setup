@@ -1,35 +1,34 @@
 # Phase-aware project guidance
 
-**This is a navigation aid, not a linear state machine.** A project can move back and forth, skip steps, and mix wiki, research and planning. Ask only the question that blocks the next useful action.
+**Planning map only.** No skill in this table is installed or approved yet. See [skill catalog](skills.md) and [roadmap #11](https://github.com/hubisan/agent-project-setup/issues/11) for readiness. The project may remain a wiki, research or non-software project indefinitely.
 
-| Current need | Suggested skill | Result | Stop when |
-| --- | --- | --- | --- |
-| Start with an existing or new repo | `adopt-project-setup` | Minimal safe adoption proposal | Existing conventions and file ownership are understood |
-| Identify direction and value | `discover-project` | Purpose, desired outcome, known constraints | Next useful experiment or decision is clear |
-| Compare possible solutions | `shape-project` | Options, risks, evidence, choice or open decision | A path can be tested, not necessarily coded |
-| Organize work | `plan-project` | Flexible Natural Planning, next actions | There is at least one executable next action |
-| Resume or review progress | `review-project` | Concise status, blockers, neglected decisions | Priority and next action are current |
-| Transfer between agents or repositories | `handoff-project` | Portable verified handoff | New reader can continue without chat history |
+| Immediate need | Proposed skill | Intended result |
+| --- | --- | --- |
+| Start or adopt a project | `adopt-project-setup` | Safe, minimal adoption |
+| Clarify aims and constraints | `discover-project` | Purpose and next learning action |
+| Deliberate on difficult decisions | `clarify-project` | Answerable decision frontier |
+| Gather external evidence | `research-project` | Linked evidence, uncertainties |
+| Compare potential solutions | `shape-project` | Justified option or next experiment |
+| Turn ideas into actions | `plan-project` | Proportionate next actions |
+| Check progress and blockers | `review-project` | Focused project pulse |
+| Learn how to work better | `project-retro` | Session, project or setup KVP proposal |
+| Move or resume a project | `handoff-project` | Verified handoff |
 
 ## Routing rules
 
-1. Determine the user's **immediate need**, not an assumed phase based on folder names.
-2. Load one fitting skill; combine with another only when a distinct need arises.
-3. Reuse existing documents and verified decisions. Search narrowly; avoid full-repository context loading.
-4. Distinguish **facts**, **ideas**, **decisions**, **tasks** and **unresolved questions**.
-5. A project can be solved by a workflow, existing tools, or AI—software development is only one option.
-6. Suggest optional coding-agent-setup only after the user chooses software implementation.
-7. Do not create a GitHub issue, PR, scheduled task or extra directory unless it benefits the actual step.
-8. Respect the repository's own permissions, writing rules and source-of-truth conventions.
+1. Use the user's **present need**, not an assumed linear phase; reuse confirmed decisions.
+2. Read only targeted project files; avoid scanning entire repositories or re-asking resolved questions.
+3. Recommend the next action with the smallest useful effort. Multiple skills are needed only when the tasks are distinct.
+4. For a skill not yet marked accepted in the catalog, **describe the intended workflow rather than claiming to invoke an installed skill**.
+5. Treat facts, ideas, decisions, tasks, open questions and permissions distinctly.
+6. Prefer existing tools or AI-assisted file workflows where they solve the need; software development and `coding-agent-setup` are optional.
+7. Respect project-owned AGENTS instructions, document formats, task trackers and privacy boundaries.
+8. Report actual saved, committed and pushed status; exported drafts remain pending.
 
-## Suggested interaction
+## Pilot
 
-Respond with a brief orientation: where the project stands, why this skill fits, and the one or two outcomes of the next step. Guide the user through those decisions, but do not demand a fixed questionnaire or interview when sufficient context exists.
-
-## Pilot scenario
-
-The meal planner starts with recipes and planning ideas, may work using AI plus files or existing tools, and only later might need an application. Apply discovery and option-shaping before any coding workflow. Preserve original notes and cite their source.
+The menu planner is a user-led, iterative test. Explore structured recipe files and AI-assisted planning before assuming it requires an application. Preserve original decisions and sources. Learn from actual difficulties by applying the KVP pattern.
 
 ## Inspiration boundary
 
-AIHero motivates phase-sensitive coaching and concise, verifiable outcomes. This setup **does not copy or install AIHero skills**: its own project workflows are derived from user needs, are usable without software development, and stay independent of any upstream skill package.
+Use ideas from AIHero selectively, **without copying or installing its skills**.

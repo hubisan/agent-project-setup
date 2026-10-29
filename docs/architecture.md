@@ -1,22 +1,23 @@
 # Architecture and rollout
 
-## Separation of concerns
+## Ownership
 
-- `agent-project-setup`: reusable instructions, phase guidance, safe adoption, context and handoff.
-- Target repo: authoritative project data, decisions, task source and format preferences.
-- `memento` (optional personal installation): personal project index, capture inbox, GTD and activity journal. No other project depends on access to it.
-- `coding-agent-setup` (optional): engineering workflow, tests and coding agents. Integration must respect common `AGENTS.md` and skills ownership without overwriting either source.
+- `agent-project-setup`: portable instructions, phase guidance, skill quality gates, safe adoption and handoff.
+- Target repository: authoritative facts, decisions, tasks, privacy rules, and Org/Markdown structure.
+- `memento` (optional personal wiki): project index, capture inbox, personal GTD and activity journal. Other repositories do not depend on it.
+- `coding-agent-setup` (optional): engineering workflow and implementation agents. Avoid shared AGENTS/skill collisions.
 
-## V1 delivery slices
+## Incremental delivery
 
-1. Phase guidance and reusable skill entrypoints (this slice).
-2. Safe adoption and update tooling with dry-run, conflict detection and idempotency tests.
-3. End-to-end meal planner pilot: discover, shape, plan, handoff; no coding assumption.
-4. memento profile: `orgfdb` queries and watch/rebuild, Capture, journal and personal GTD, independently tested.
-5. Optional co-installation with coding-agent-setup and later extensions.
+1. **Design baseline and skill catalog**: 121 decisions, phase navigation, nine separately scoped skill issues. No installed skills yet.
+2. **Adopt skill then safe installer**: test an individual `adopt-project-setup` skill (#12) and safe project adoption (#3), with dry-run and idempotency.
+3. **KVP and questioning**: develop `project-retro` (#13) and `clarify-project` (#14) one by one using user-observed friction.
+4. **General project workflows**: develop and verify each discovery, research, shaping, planning, review and handoff skill separately (#15–#20).
+5. **User-led menu-planner pilot**: improve the skills as the project is actually used, without assuming an application.
+6. **Optional extensions**: memento with orgfdb and GTD, setup upgrades, independent coding setup, and other later workflows.
 
 ## Rules for future adapters
 
-Canonical skills live in `.agents/skills/`; adapters for specific hosts must be derived without changing canonical files. Use project-owned `AGENTS.md` as the shared entrypoint. Never overwrite unknown existing sections. An upgrade must compare provenance/version and local changes before writing.
+Canonical accepted skills live in `.agents/skills/`; provider-specific adapters or copies are derived, never independently maintained. Project-owned `AGENTS.md` remains the main shared entrypoint, with narrow pointers and collision-safe updates.
 
-On failure, disclose which files were modified and which operations were not completed; never claim that exported captures were stored in the intended repository.
+On failure, disclose which files were actually modified. An exported capture is not the same as a saved capture; committing or pushing is not implied by a local write.
