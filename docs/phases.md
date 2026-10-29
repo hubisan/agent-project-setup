@@ -21,6 +21,18 @@ Use Natural Planning as a **lightweight method**, not a separate compulsory stag
 
 A simple project may need only a purpose, a possible outcome and a single next action. A complex project may need a stakeholder map, structured requirements, risk assumptions, prototypes or an acceptance plan. Do what the current need justifies.
 
+## Core working principle: Decide -> Try -> Adjust
+
+Move projects forward through short, reversible learning cycles rather than lengthy speculative interviews.
+
+1. **Decide:** use existing decisions and verified information; make reasonable, low-risk, reversible choices independently. State assumptions when they matter. Ask the user only when their goals, values, priorities or a material trade-off determine the choice.
+2. **Try:** do a small, useful piece of real work or run a proportionate experiment. A next-action list is not a trial or a completed result.
+3. **Adjust:** compare what happened with the desired outcome; keep what works, revise decisions or approach when evidence warrants it, and continue.
+
+Prefer changes that are cheap to reverse. The time spent asking many hypothetical questions may exceed the cost of revising a few good defaults after real feedback. For consequential, irreversible, costly or permission-requiring actions, obtain the appropriate explicit decision or authorisation before acting.
+
+This principle applies **across all phases and skills**, particularly `aps-clarify`, `aps-guide`, `aps-next` and `aps-improve`. Reopen earlier choices only when new evidence or real use justifies doing so.
+
 ## Routing rules
 
 1. Identify the **immediate need**, not an assumed phase from a folder name.
