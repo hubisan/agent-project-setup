@@ -7,5 +7,6 @@ This repository maintains vendor-neutral project workflows and skills. The repos
 - A project may stay a research, wiki, or planning project indefinitely. Do not assume a software solution.
 - Prefer a small next action over a full lifecycle ceremony. Existing decisions remain settled unless new evidence materially changes them.
 - Work with the user's existing Org or Markdown structure. Do not move source material without approval.
+- Borrow useful ideas from AIHero (phase guidance, questioning, focused research), but design original general-project workflows. Do not copy or vendor AIHero skill bodies or install its skill bundle as part of adoption.
 - Keep local/private data out of this public repository. Report what was really written, committed and pushed as separate states.
 - Changes to managed instructions or skills require review; keep Markdown concise and English.
