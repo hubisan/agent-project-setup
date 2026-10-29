@@ -997,7 +997,8 @@ prüfen, keine grossen Frameworks vor dem ersten nutzbaren Ablauf bauen.
 :CUSTOM_ID: ausserhalb-des-aktuellen-umsetzungsauftrags
 :END:
 Diese Lieferung enthält ausschliesslich Spezifikation und Prüfplanung.
-Sie erstellt keine Repositories, Issues, PRs, Skills, produktivenSkripte, Kalendertermine oder Automationen. Auch die bestehenden
+Sie erstellt keine Repositories, Issues, PRs, Skills, produktiven
+Skripte, Kalendertermine oder Automationen. Auch die bestehenden
 Repositories werden nicht verändert.
 
 Ausserhalb des ersten Produktkerns bleiben: eigene Desktop- und Mobile-
