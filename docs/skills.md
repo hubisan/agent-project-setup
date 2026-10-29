@@ -1,64 +1,79 @@
-# Project skill catalog
+# APS skill catalog
 
-**Status:** proposed / not yet accepted. This is the source of truth for the **order and maturity** of skills, not an instruction to install them all.
+**Status: design candidates, not installed or accepted skills.** Every original skill uses the `aps-` prefix (from `agent-project-setup`), including its directory, frontmatter name, invocation and references. The catalog describes **responsibilities**; it is not an instruction to build every candidate.
 
-**Parent tracker:** [Skill roadmap #11](https://github.com/hubisan/agent-project-setup/issues/11). These are **linked GitHub issues**, not native GitHub sub-issues (current connector cannot create those).
+See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). The existing implementation issues #12–#20 predate this revised taxonomy and **will need review before their titles/scopes are changed**. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
 
-## Skill candidates
+## Phase-specific candidates
 
-| Order | Skill | When it helps | Main result | Status | Issue |
-| --- | --- | --- | --- | --- | --- |
-| 1 | `adopt-project-setup` | New or existing project wants the setup | Safe, verified adoption | Planned | [#12](https://github.com/hubisan/agent-project-setup/issues/12) |
-| 2 | `project-retro` | After a session, a project milestone, or a workflow friction | Evidence-based KVP improvement proposal | Planned | [#13](https://github.com/hubisan/agent-project-setup/issues/13) |
-| 3 | `clarify-project` | An important decision requires structured questioning | Answered decision tree and next open frontier | Planned | [#14](https://github.com/hubisan/agent-project-setup/issues/14) |
-| 4 | `discover-project` | Goals, context or purpose are unclear | Outcome and next learning action | Planned | [#15](https://github.com/hubisan/agent-project-setup/issues/15) |
-| 5 | `research-project` | External evidence is required | Source-linked findings and uncertainty | Planned | [#16](https://github.com/hubisan/agent-project-setup/issues/16) |
-| 6 | `shape-project` | Compare AI workflow, existing tools or custom solution | Choice or testable experiment | Planned | [#17](https://github.com/hubisan/agent-project-setup/issues/17) |
-| 7 | `plan-project` | Turn purpose and ideas into executable next actions | Flexible Natural Planning | Planned | [#18](https://github.com/hubisan/agent-project-setup/issues/18) |
-| 8 | `review-project` | Check progress and priorities | Few NEXT actions and relevant blockers | Planned | [#19](https://github.com/hubisan/agent-project-setup/issues/19) |
-| 9 | `handoff-project` | Resume work in a new session or extract a wiki project | Portable, verified continuation package | Planned | [#20](https://github.com/hubisan/agent-project-setup/issues/20) |
+| Phase | Skill candidate | Responsibility | Expected outcome | Existing issue |
+| --- | --- | --- | --- | --- |
+| 1. Clarify | `aps-frame` | Clarify purpose, desired outcome, success indicators and boundaries without a heavyweight vision ceremony | Small project brief | [#15](https://github.com/hubisan/agent-project-setup/issues/15) (re-scope candidate) |
+| 2. Understand | `aps-analyze` | Inspect the current situation, stakeholders, environment, constraints, needs and requirements at an appropriate depth | Situation and actionable requirements | Not yet assigned |
+| 3. Design | `aps-design` | Explore, compare and refine options, including AI + files, existing tools, process changes or custom software | Justified testable solution | [#17](https://github.com/hubisan/agent-project-setup/issues/17) (re-scope candidate) |
+| 4. Plan | `aps-plan` | Organise the selected work, dependencies, priorities and next actions | Executable plan appropriate to project size | [#18](https://github.com/hubisan/agent-project-setup/issues/18) |
+| 5. Execute | **No generic skill** | Perform real work or experiments with the relevant available tools and domain-specific methods | Actual results, not only planned NEXT actions | Not applicable |
+| 6. Review | `aps-validate` | Test the outcome against requirements, success indicators and agreed acceptance | Findings, gaps and acceptance decision | Not yet assigned |
 
-**Phase guidance is not a linear lifecycle.** These skills can be used in any order as the project evolves. The order above is a *development priority*, not an order users must follow. A project can remain research/planning forever without a coding setup.
+Do not automatically split stakeholder mapping, risk assessment, requirements or prototyping into additional skills. These are methods the phase skill can select as needed. Introduce a specialised skill only when actual work demonstrates a repeated, substantial workflow.
 
-## Skill acceptance contract
+## Cross-cutting candidates
 
-Develop **one skill at a time**, in its own issue and review. An author must show:
+| Skill candidate | Purpose | Existing issue |
+| --- | --- | --- |
+| `aps-clarify` | Question any scope (project, stakeholder, assumption, single requirement), explain recommended choices and capture the decision | [#14](https://github.com/hubisan/agent-project-setup/issues/14) (re-scope candidate) |
+| `aps-brainstorm` | Expand the idea space using prompts, divergent perspectives and combinations; organise afterwards without premature evaluation | Not yet assigned |
+| `aps-research` | Seek and compare evidence, distinguish source claims from hypotheses and note uncertainty | [#16](https://github.com/hubisan/agent-project-setup/issues/16) |
+| `aps-review` | Review actual work status, relevant blockers, commitments and next actions at any point | [#19](https://github.com/hubisan/agent-project-setup/issues/19) |
+| `aps-improve` | Continuous improvement (KVP): identify and test better **content or methods** for a chat/session, a project or the reusable setup | [#13](https://github.com/hubisan/agent-project-setup/issues/13) (re-scope candidate) |
+| `aps-handoff` | Hand over evidence, decisions, current state and actual save/commit status between sessions or repositories | [#20](https://github.com/hubisan/agent-project-setup/issues/20) |
+| `aps-adopt` | Safely integrate the setup into a project with preview, conflict handling and preservation of existing ownership | [#12](https://github.com/hubisan/agent-project-setup/issues/12) (re-scope candidate) |
 
-1. **Trigger:** clear phrases/contexts that require this skill and when it should not fire.
-2. **Inputs:** exactly which existing files, user decisions and tools it needs. Reuse existing sources before asking again.
-3. **Output:** observable user result, source-of-truth destination, and explicit proposed/saved/committed/pushed status.
-4. **Procedure:** concise repeatable actions, only necessary branching and a checkable stopping condition.
-5. **Quality:** at least three meaningful scenarios (normal, ambiguous, failure/missing permission). Review the behaviour before calling it ready.
-6. **Portability:** useful in a plain Markdown/Org and CLI context; optional host-specific visual controls must not be required.
-7. **Security and improvement:** preserve project privacy, avoid hidden cross-repo writes, and feed verified general workflow lessons to `project-retro` only with authorisation.
+**Distinct review questions:** `aps-review` = *Where do we stand and what is next?*; `aps-validate` = *Does the outcome meet the requirements?*; `aps-improve` = *How can the work or our way of working improve?*
 
-An installed `SKILL.md` is **not evidence of acceptance**. The six early draft skill bodies from PR #1 remain in Git history as ideas, and are intentionally withdrawn from active discovery pending individual review.
+## Natural Planning and brainstorming
 
-## KVP / retrospective — `project-retro`
+Natural Planning is an on-demand technique across phases: **Purpose -> Outcome -> Brainstorming -> Organising -> Next actions**. Brainstorming often starts after clarifying the outcome, but is also valuable during situation analysis, design or execution. Organisation may structure *requirements*, *solution concepts* or *work items*: these are different things and should not be conflated.
 
-Three scopes with distinct owners:
+Execution is a **real project phase after planning**; do not imply that identifying a NEXT action means it was done.
 
-- **Session/chat:** concise, evidence-based reflection on what went well, what caused friction and one or two adjustments for the next interaction. No assumption of repository write access.
-- **Project:** record project-specific process lessons in that project's established docs/rules (only when authorised).
-- **Reusable setup:** abstract a proven general improvement into a proposed update for `agent-project-setup`. Remove project identifiers, personal details and confidential content. Show diff and request the appropriate permission before writing.
+## Skill quality gate: develop one at a time
 
-Prefer a small actionable outcome to a ritual. Do not produce a retro automatically after every message. Distinguish project work review (`review-project`: **what next?**) from KVP (`project-retro`: **how should the process improve?**). Evaluate whether a proposed improvement worked on a later use, and retire ineffective rules.
+For every candidate, design and verify:
 
-## Structured questioning — `clarify-project`
+1. **Triggers and boundaries:** useful when asked for this workflow, including relevant smaller scopes; specify when another skill fits better.
+2. **Inputs and permissions:** use existing authoritative project information before asking again; no silent cross-repository or external action.
+3. **Output contract:** concrete useful result, provenance and accurate proposed/saved/committed/pushed statuses.
+4. **Procedure and stopping condition:** minimal, readable process with only necessary branching, checkable completion, and plain-text fallback.
+5. **Practical scenarios:** test at least a normal, ambiguous and blocked/failure case; observe actual user friction.
+6. **Portability:** host-agnostic Markdown/Org guidance; specific UI capabilities are optional.
+7. **Revision:** incorporate evidence from the user-led meal-planner pilot, review the skill independently and only then mark it accepted.
 
-This project needs a **presentation contract** as well as a reasoning process:
+A short `SKILL.md` is **not** acceptance evidence. No project skill is currently ready for installation.
 
-- Each question has a stable number, short title, enough context, options A/B/C where appropriate and **D — Other solution** with free text.
-- Clearly distinguish the recommended answer and the user's actual selection.
-- End each round with **general remarks** and a single clear submission path.
-- Where supported, use compact interactive controls, preselect the recommended answer, and reveal custom text only for D. Else render the same content in readable plain text.
-- Preserve corrections and comments on any option, including an answer like “B, with this change.”
-- Ask only independent frontier questions; don't repeatedly ask settled decisions; finish when the tree is resolved and the user confirms shared understanding.
+## Clarification and questioning presentation contract
 
-A general skill should not hard-code a particular ChatGPT component or assume all models can render a form.
+`aps-clarify` should preserve the proven interview format:
 
-## Later optional integration skills
+- Stable question number and concise heading, with enough context to choose.
+- Options A/B/C as needed and **D – Other solution** with free text.
+- A visibly marked **recommended answer with its reasoning and key trade-off**, distinguishing recommendation from user confirmation.
+- One general-comments field and one submission action at the end of a round.
+- In an interactive host, preselection is a suggestion, never assumed consent; in CLI/text contexts, show an equivalent legible questionnaire.
+- Preserve nuanced replies (e.g. “B, with this change”) and ask only the current independent question frontier.
 
-`capture`, `inbox-review`, `gtd-review`, `activity-journal`, `calendar-sync` and update/maintenance support are **not part of this initial nine-skill development queue**. Their broader functionality is already covered by the relevant future memento and update tickets (#7–#10) or explicitly deferred. Introduce separate skill issues only when a real repeatable workflow calls for one.
+## Continuous improvement contract
 
-**AIHero boundary:** borrow practical ideas (focused research, questions, progressive project guidance, retrospectives), not upstream skill bodies, naming obligations, installations or version-coupled dependencies.
+`aps-improve` supports:
+
+- **Session/chat:** what helped or hindered this interaction and one or two adjustments.
+- **Project:** project-specific improvements to the outcome, content, decisions or process, recorded in the project's own authoritative files if authorised.
+- **Reusable setup:** generalise proven lessons without personal/confidential details; propose a reviewed update to `agent-project-setup`, without silently writing across project boundaries.
+
+Improve during relevant work, at milestones or on request. A future scheduled check requires a separately enabled scheduling mechanism; the skill alone cannot autonomously operate between chats. Evaluate whether an adopted improvement worked rather than repeatedly generating the same suggestion.
+
+## Language and provenance
+
+Write setup instructions and skills in **English**. Respond to users in their chosen language and preserve the language and conventions of existing project content; do not translate unless requested. Approved historical German specification documents remain unchanged.
+
+AIHero contributes **design inspiration only**, not copied skills, installation or vendor-dependent workflow. `coding-agent-setup` and `memento` remain independent optional integrations.
