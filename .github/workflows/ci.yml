@@ -15,3 +15,5 @@ jobs:
         run: python3 tests/check_skills.py
       - name: Check specification baseline
         run: python3 tests/check_specs.py
+      - name: Check session handoff contract
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
