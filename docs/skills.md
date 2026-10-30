@@ -83,18 +83,9 @@ A short `SKILL.md` is **not** acceptance evidence. No project skill is currently
 
 ## Clarification and questioning presentation contract
 
-**Historical pilot:** [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. These are retrospective routing hypotheses, not verified claims about missing original question wording.
+**Historical context:** The [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. It is a routing hypothesis, not a measured reduction in actual interview questions.
 
-
-
-`aps-clarify` should preserve the proven interview format:
-
-- Stable question number and concise heading, with enough context to choose.
-- Options A/B/C as needed and **D – Other solution** with free text.
-- A visibly marked **recommended answer with its reasoning and key trade-off**, distinguishing recommendation from user confirmation.
-- One general-comments field and one submission action at the end of a round.
-- In an interactive host, preselection is a suggestion, never assumed consent; in CLI/text contexts, show an equivalent legible questionnaire.
-- Preserve nuanced replies (e.g. “B, with this change”) and ask only the current independent question frontier.
+**Single source for question layout:** Use the [question presentation reference](../.agents/skills/aps-clarify/references/question-presentation.md) in the candidate `aps-clarify` skill. It defines question numbering, optional clarification text, recommended-first answers and free-text comments. Future APS questioning skills should point to this common guidance rather than copy it. Interactive forms are optional and must have a plain-text equivalent.
 
 ### Decision autonomy and question discipline
 
