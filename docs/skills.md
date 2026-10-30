@@ -21,9 +21,15 @@ Do not automatically split stakeholder mapping, risk assessment, requirements or
 
 Within **`aps-analyze` / Understand**, develop a lightweight **conceptual domain model** when the project's subject has ambiguous terms, interacting concepts, or important rules. This is useful for research, knowledge bases, organisational processes and personal projects as well as software.
 
-- Reuse and refine the project's vocabulary: define important terms, synonyms and boundaries; identify when the same word has different meanings.
-- Describe relevant concepts, relationships and real-world rules, preferably using concrete examples and counterexamples to discover contradictions.
-- Capture only the detail needed for the next decision or piece of work. Do not automatically turn a conceptual domain model into a database, class diagram or software architecture.
+**Progressive depth: map first, zoom deliberately.** Keep the scope of the analysis visible; do not automatically follow interesting edge cases into deep modeling.
+
+1. **Level 1 – domain landscape:** identify the main domains, each with a one-sentence purpose, rough boundary and important interactions. Keep this overview deliberately coarse, and save it before moving deeper. Avoid data fields, implementation details and exhaustive exceptions.
+2. **Level 2 – selected domain:** zoom into **one domain** when it matters to the current goal. Clarify its key concepts, terminology, stakeholders, principal processes, relationships and high-value rules. Retain links to the Level 1 landscape.
+3. **Level 3 – targeted detail:** explore specific constraints, edge cases, examples or precise rules **only if a concrete open question, experiment, requirement or next action needs it**. Do not fully specify every domain in advance.
+
+Before moving from one level to the next, state **which domain**, **what decision/work requires the detail**, and **the expected useful outcome**. If no such need exists, stop at the current level, note optional unknowns and recommend the next meaningful action. New evidence may justify zooming back out and revising the domain map.
+
+Reuse and refine the existing project vocabulary and document only meaningful distinctions. Use concrete examples or counterexamples where they resolve ambiguities. Do not automatically turn a conceptual domain model into a database, class diagram, DDD bounded-context architecture or software design.
 - Save useful agreed terminology and relationships in the **target project's established authoritative files** (existing glossary, notes, specification or model). Create a new file only when its value is clear; distinguish agent-proposed choices from user-confirmed definitions.
 - **`aps-frame`** defines *why and what outcome*; **`aps-analyze`** sharpens *what the domain means*; **`aps-design`** uses the resulting understanding to propose *how to solve the problem*. Continue refining the model across phases if new evidence warrants it.
 
