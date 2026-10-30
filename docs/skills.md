@@ -17,6 +17,18 @@ See [six project phases](phases.md) and [roadmap issue #11](https://github.com/h
 
 Do not automatically split stakeholder mapping, risk assessment, requirements or prototyping into additional skills. These are methods the phase skill can select as needed. Introduce a specialised skill only when actual work demonstrates a repeated, substantial workflow.
 
+### Domain modeling as a method, not an IT-only phase
+
+Within **`aps-analyze` / Understand**, develop a lightweight **conceptual domain model** when the project's subject has ambiguous terms, interacting concepts, or important rules. This is useful for research, knowledge bases, organisational processes and personal projects as well as software.
+
+- Reuse and refine the project's vocabulary: define important terms, synonyms and boundaries; identify when the same word has different meanings.
+- Describe relevant concepts, relationships and real-world rules, preferably using concrete examples and counterexamples to discover contradictions.
+- Capture only the detail needed for the next decision or piece of work. Do not automatically turn a conceptual domain model into a database, class diagram or software architecture.
+- Save useful agreed terminology and relationships in the **target project's established authoritative files** (existing glossary, notes, specification or model). Create a new file only when its value is clear; distinguish agent-proposed choices from user-confirmed definitions.
+- **`aps-frame`** defines *why and what outcome*; **`aps-analyze`** sharpens *what the domain means*; **`aps-design`** uses the resulting understanding to propose *how to solve the problem*. Continue refining the model across phases if new evidence warrants it.
+
+**Initial decision:** domain modeling is a callable analysis **method** within `aps-analyze`, not an additional mandatory skill. Consider a separately scoped `aps-model` only after real pilots demonstrate a repeatable, distinct workflow.
+
 ## Cross-cutting candidates
 
 | Skill candidate | Purpose | Existing issue |
