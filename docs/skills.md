@@ -63,7 +63,7 @@ Reuse and refine the existing project vocabulary and document only meaningful di
 
 ## Session continuity
 
-The first [\`aps-handoff\` prototype](../.agents/skills/aps-handoff/SKILL.md) specifies the single session-handoff protocol. The actual work ticket, specification and ADRs remain authoritative. It is a **candidate pending scenario review**, not an accepted or installed workflow in target projects. See [Issue #20](https://github.com/hubisan/agent-project-setup/issues/20); wiki-to-project extraction remains a separate workflow under [Issue #6](https://github.com/hubisan/agent-project-setup/issues/6).
+The first [`aps-handoff` prototype](../.agents/skills/aps-handoff/SKILL.md) specifies the single session-handoff protocol. The actual work ticket, specification and ADRs remain authoritative. It is a **candidate pending scenario review**, not an accepted or installed workflow in target projects. See [Issue #20](https://github.com/hubisan/agent-project-setup/issues/20); wiki-to-project extraction remains a separate workflow under [Issue #6](https://github.com/hubisan/agent-project-setup/issues/6).
 
 ## Natural Planning and brainstorming
 
