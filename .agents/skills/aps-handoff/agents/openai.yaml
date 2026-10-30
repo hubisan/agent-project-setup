@@ -1,0 +1,3 @@
+interface:
+  display_name: APS Session Handoff
+  short_description: Resume work through verified GitHub handoff issues

@@ -56,10 +56,14 @@ Reuse and refine the existing project vocabulary and document only meaningful di
 | `aps-research` | Seek and compare evidence, distinguish source claims from hypotheses and note uncertainty | [#16](https://github.com/hubisan/agent-project-setup/issues/16) |
 | `aps-review` | Review actual work status, relevant blockers, commitments and next actions at any point | [#19](https://github.com/hubisan/agent-project-setup/issues/19) |
 | `aps-improve` | Continuous improvement (KVP): identify and test better **content or methods** for a chat/session, a project or the reusable setup | [#13](https://github.com/hubisan/agent-project-setup/issues/13) (re-scope candidate) |
-| `aps-handoff` | Hand over evidence, decisions, current state and actual save/commit status between sessions or repositories | [#20](https://github.com/hubisan/agent-project-setup/issues/20) |
+| `aps-handoff` | Transfer or resume session context through a verified, labelled GitHub Issue; retain Markdown fallback and source-of-truth links | [#20](https://github.com/hubisan/agent-project-setup/issues/20) (prototype) |
 | `aps-adopt` | Safely integrate the setup into a project with preview, conflict handling and preservation of existing ownership | [#12](https://github.com/hubisan/agent-project-setup/issues/12) (re-scope candidate) |
 
 **Distinct review questions:** `aps-review` = *Where do we stand and what is next?*; `aps-validate` = *Does the outcome meet the requirements?*; `aps-improve` = *How can the work or our way of working improve?*
+
+## Session continuity
+
+The first [`aps-handoff` prototype](../.agents/skills/aps-handoff/SKILL.md) specifies the single session-handoff protocol. The actual work ticket, specification and ADRs remain authoritative. It is a **candidate pending scenario review**, not an accepted or installed workflow in target projects. See [Issue #20](https://github.com/hubisan/agent-project-setup/issues/20); wiki-to-project extraction remains a separate workflow under [Issue #6](https://github.com/hubisan/agent-project-setup/issues/6).
 
 ## Natural Planning and brainstorming
 
