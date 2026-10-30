@@ -1,42 +1,46 @@
 ---
 name: aps-clarify
-description: Clarify a project goal, requirement, assumption, stakeholder concern, or individual decision with the fewest high-value questions. Use when a user asks to clarify, sharpen, decide, or resolve project uncertainty, including natural-language requests for quick or deep clarification. Reuse documented decisions, verify facts, choose safe reversible defaults transparently, and ask the user only about consequential choices. Work for knowledge, research, personal planning, and software projects without presuming an app is needed.
+description: Clarify open questions, goals, requirements, and decisions. Use when uncertainty needs to be resolved before meaningful progress can be made.
 ---
 
 # APS Clarify
 
-Resolve the **current decision frontier**, not every possible future detail. Follow *Decide -> Try -> Adjust*: finish with a workable next action when possible.
+Resolve the **current decision frontier**: the choices that matter for the next useful step. Follow *Decide -> Try -> Adjust* rather than exploring every possible future detail.
 
 ## Workflow
 
-1. **Bound the request.** Identify the particular goal or decision. Respect natural-language guidance such as "quick", "deep", "one question at a time", or "three questions per round"; do not require formal parameters. Use the user's language for conversation and the target project's language for documents.
-2. **Read selectively.** Inspect the project's relevant existing decisions, requirements, notes, permissions, and evidence. Never reopen a settled decision without new consequential evidence; do not require an entire project history for a narrow question.
-3. **Route each uncertainty:**
-   - **Known:** reuse the recorded fact or decision.
-   - **Verifiable:** research or test it when tools and permissions permit.
-   - **Reversible default:** decide, state why and what would cause revision, and persist when meaningful.
-   - **User-owned:** ask about priorities, goals, personal preferences, domain policy, substantial trade-offs, privacy boundaries, or consequential actions.
-   - **Later:** defer optional details with the condition that would make them relevant.
-   - **Duplicate:** consolidate related questions into one decision with preserved nuances.
-4. **Ask the minimum independent user-owned questions** that affect the immediate next step. Default to one to three per round, adjusted to the user's preference and complexity. Offer specific alternatives and a reasoned recommendation when there is a real trade-off. Include **Other / own solution** and accept qualified answers such as "B, except...". A recommended or preselected option is **not** consent.
-5. **Use shared question presentation.** Apply [question-presentation.md](references/question-presentation.md) for questions requiring structured choices. Prefer conversational prose for a single simple open question. Use interactive controls only when supported; equivalent plain text must work everywhere. Do not claim a separate form skill or cross-skill invocation exists.
-6. **Persist consequential decisions in the target project's established authoritative file**, with selection, reason, origin (agent-selected vs user-confirmed), and revisit condition when useful. Retain existing Org/Markdown conventions. Avoid creating a new file merely to log trivial choices. Respect repository policies and write permissions; never equate choosing a default with permission to publish, merge, delete or transmit data.
-7. **Stop when sufficient.** State the decisions, assumptions and any meaningful open blocker; say accurately what was proposed, saved, committed or pushed. Suggest or perform the smallest useful next step according to available permissions. If no persistence was possible, give ready-to-save wording and explicitly mark it unsaved.
+1. **Bound the request.** Identify the goal, question, or decision to clarify. Adapt depth and question format to the user's request and the current context.
+2. **Read selectively.** When project sources exist, follow their `AGENTS.md`, README or index pointers and inspect only relevant decisions, requirements, notes and permissions. Reuse established choices unless new consequential evidence warrants revisiting them.
+3. **Route every uncertainty before asking anything:**
+   - **Handle without asking the user:**
+     - **Known:** reuse an established fact or decision.
+     - **Verify:** research or test an ascertainable fact using available evidence and tools.
+     - **Decide:** choose a safe, low-risk, reversible default; tell the user why and record it when it matters later.
+     - **Consolidate:** combine overlapping questions into one decision while preserving earlier answers and nuances.
+   - **Ask the user:** seek their judgement for goals, priorities, preferences, domain policy, material trade-offs, privacy boundaries or consequential permissions.
+   - **Defer:** park a non-blocking question until a concrete decision or task requires it; retain a revisit condition if useful.
+4. **Ask only the current independent user-owned questions.** Normally group **3–5 questions per round**, when that many are genuinely needed. Ask fewer when fewer matter, or ask a single **blocking question first** when its answer determines which further questions are relevant. Adapt to the user's stated preference. Offer alternatives and a justified recommendation for real trade-offs; never treat a suggestion or preselection as consent.
+5. **Present questions consistently.** Follow [question-presentation.md](references/question-presentation.md) for numbering, context, option order and free-text responses. Use conversational questions when simpler; use interactive forms only where supported, with a usable plain-text fallback.
+6. **Process answers and continue.** Preserve qualified choices and update the unresolved decision frontier after each round. Continue with the next relevant questions or useful work. Summarise decisions at meaningful milestones or when a response changes several other choices, not mechanically after every round.
+7. **Record consequential decisions** in the existing authoritative source, if available and permitted. Capture the choice, reason, origin (agent-selected versus user-confirmed) and relevant assumptions or revisit conditions. Retain the project's established language and Org/Markdown conventions. Do not create a new log for trivial details or interpret a reversible default as permission to publish, merge, delete or share data.
+8. **Stop when the current work can progress.** Report what is decided, assumed or genuinely blocked and distinguish proposed, saved, committed and pushed status. If writing is unavailable, provide ready-to-save wording and state explicitly that it is **not saved**. Perform or propose the smallest useful next action within the available permissions.
 
 ## Completion check
 
-- The current goal or decision can progress, **or** precisely one blocking user choice or missing piece of evidence remains visible.
-- No question repeats an available source or seeks approval of an obvious reversible implementation default.
-- Every meaningful autonomous choice is disclosed, with saved status accurately reported.
-- The next action is actionable; optional later branches remain deferred.
+- The current goal can progress, or the remaining blocking user choice(s) or unavailable evidence are explicit.
+- Every question is both user-owned and relevant now; already known, verifiable, reversible, overlapping and deferrable questions are handled without unnecessary interruption.
+- Meaningful autonomous decisions are disclosed and their persistence status is accurate.
+- The next action is practical rather than another speculative questionnaire.
 
 ## Scenario checks
 
-- A broad meal-planner idea -> clarify the actual desired outcome, avoid assuming software, propose a small real trial.
-- Existing decision says Org files are grouped by topic -> reuse it rather than requesting a new file-size policy.
-- A routine filename convention -> choose a safe default, record it only if its effects matter later.
-- Compatibility or tool support unknown -> inspect or test before asking the user for technical guesses.
-- Privacy boundary or destructive action -> obtain user authority before acting.
-- No project write access -> give a clear proposed decision and **not saved** status.
+- A broad meal-planner idea -> clarify the desired outcome without assuming an application is necessary; propose a small real trial.
+- A previous decision sets topic-based Org files -> reuse it instead of asking about file-size limits again.
+- Several independent user-owned choices -> ask 3–5 together; if one choice blocks the rest, ask it first.
+- A routine filename convention -> select a safe default, not a user question.
+- Unknown tool compatibility -> investigate or test before asking for a technical guess.
+- Two overlapping storage questions -> consolidate while preserving prior constraints.
+- Privacy boundaries or destructive actions -> seek explicit authority.
+- No write access -> distinguish the drafted decision from a saved decision.
 
-The historical 121-topic audit is a *retrospective routing hypothesis*, not evidence that this skill has reduced real interviews by a measured percentage. Use it as background, not as a list of questions to ask.
+The [121-topic retrospective audit](../../../docs/clarify-121-question-audit.md) is a **routing hypothesis**, not evidence of measured interview reductions.
