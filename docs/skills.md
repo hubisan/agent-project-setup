@@ -10,6 +10,10 @@ Prefer **cohesive, topic-based Org files** rather than either a monolithic repos
 
 Split a file **only when there is a concrete benefit**: clearly independent domains, separate lifecycles or maintainers, distinctly different retrieval/work contexts, or an actual navigation/maintenance problem. File size alone is not a reason to split. Avoid one-file-per-thought, one-file-per-term and arbitrary line-count/heading-count thresholds.
 
+**Directories are first-class organisation tools.** Group coherent Org/Markdown files in a small number of descriptively named, domain-based directories once a flat directory becomes hard to navigate. Avoid both an unstructured root crowded with unrelated files and unnecessary deep or single-file folder trees. The right split depends on meaningful subject boundaries and the way people and agents retrieve information, not numeric file-count limits.
+
+**Navigation and context efficiency:** a clear hierarchy and a short index/README (only where it provides useful orientation) let agents inspect directory names and read relevant files selectively instead of scanning everything. This can reduce file discovery effort and unnecessary context/token use **when the agent actually follows that selective retrieval workflow**; folder nesting itself does not guarantee token savings. Maintain obvious paths and links; prefer a few coherent directories with cohesive medium-to-large Org files.
+
 Retain existing project conventions and meaningful cross-links. When splitting is warranted, use a small number of well-named, coherent files and keep their relationships discoverable. **Do not automatically reorganise an existing user's notes.** Ask permission before any consequential migration and explain the proposed split.
 
 ## Phase-specific candidates
