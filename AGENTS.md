@@ -7,6 +7,7 @@ This public repository develops provider-neutral project guidance. It is not a t
 - **Develop one skill at a time.** Its GitHub issue defines cases, contracts and acceptance tests. A candidate in the catalog is not an installed skill.
 - Store accepted canonical skills under `.agents/skills/`; adapter/mirror output must remain derived. Preserve project-owned `AGENTS.md` and existing installed skills.
 - A project may remain research, planning or wiki work. Choose an application only if the user wants that direction.
+- **Autonomous decisions:** tell the user about meaningful agent-made choices and persist the choice/rationale in the target project's established decision source; trivial details need no log. If unsaved, report that explicitly. See `docs/skills.md` for the rule.
 - **Decide -> Try -> Adjust:** move forward with safe, reversible defaults, test a small real result, and revise using evidence. Ask the user only for material preferences, trade-offs or required approvals; follow `docs/phases.md` for boundaries.
 - Keep existing Org/Markdown source of truth and decisions. Load relevant sections rather than entire repositories.
 - AIHero is conceptual inspiration only; write original general-project instructions and do not copy or install upstream skills.
