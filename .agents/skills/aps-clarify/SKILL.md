@@ -43,4 +43,4 @@ Resolve the **current decision frontier**: the choices that matter for the next 
 - Privacy boundaries or destructive actions -> seek explicit authority.
 - No write access -> distinguish the drafted decision from a saved decision.
 
-The [121-topic retrospective audit](../../../docs/clarify-121-question-audit.md) is a **routing hypothesis**, not evidence of measured interview reductions.
+The historical 121-topic audit is a **routing hypothesis**, not evidence of measured interview reductions.
