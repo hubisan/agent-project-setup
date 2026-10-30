@@ -1,5 +1,7 @@
 # agent-project-setup
 
+![APS project icon](assets/aps-icon.webp)
+
 Provider-independent AI guidance for knowledge bases, planning, research and other projects. A project does not need to become a software application.
 
 **Core principle:** **Decide -> Try -> Adjust.** Make safe, reversible choices, try the smallest useful next step, and adapt to actual results rather than over-questioning. See [phase navigation](docs/phases.md) for boundaries.
