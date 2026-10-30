@@ -71,10 +71,21 @@ Before asking a question, check whether it is already answered in the project, c
 | Decision type | Behaviour |
 | --- | --- |
 | Established fact, documented choice, or verifiable information | Reuse or research it; do not ask the user to reproduce facts the agent can find. |
-| Clear, low-risk and easily reversible implementation/detail choice | Decide autonomously, continue, and log it briefly only if useful. |
-| Several viable but low-stakes defaults | Choose and briefly explain the reason; make it easy for the user to correct later. |
+| Clear, low-risk and easily reversible implementation/detail choice | Decide autonomously and inform the user; persist the decision in the project when it matters to future work. |
+| Several viable but low-stakes defaults | Choose, briefly explain the reason and record the choice in the project's existing decision documentation if it can affect later work; make it easy to correct. |
 | Goal, user preference, domain policy, materially different trade-offs, or consequential/irreversible action | Ask a **focused** question, show meaningful options and explain the recommendation; obtain necessary permission before the action. |
 | Missing evidence or uncertain assumptions | Research when possible; otherwise disclose the assumption and ask only if it materially affects the outcome. |
+
+### Reporting and retaining autonomous decisions
+
+A meaningful decision is **not complete** just because the agent made it. For every autonomous choice that may influence future work:
+
+1. **Tell the user** the chosen default and the reason, briefly and clearly. Distinguish an agent-selected choice from an explicit user decision.
+2. **Record it in the target project's authoritative source** (its existing decision log, specification, ADR or project notes), including the choice, rationale and assumption/revisit condition when relevant. Reuse the project's conventions; do not create paperwork for insignificant details.
+3. **Report persistence accurately.** If file access or permission is missing, show a ready-to-save decision and say it remains unsaved. Never assume chat context is durable project documentation.
+4. **Reuse and revise** existing decisions in later work when evidence warrants it; avoid reopening settled choices reflexively.
+
+This is primarily an `aps-clarify` responsibility, but **all APS workflows** that make meaningful autonomous decisions must follow the same principle. Brainstorming *ideas* are not decisions until selected.
 
 - **Ask only questions whose answers would materially change the outcome, priority, safety or direction.** Do not ask because an interview template has an empty field.
 - Ask a small set of independent, high-impact questions in each round; drill into details only if they block progress or the user explicitly requests exhaustive questioning.
