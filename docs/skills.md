@@ -71,6 +71,10 @@ A short `SKILL.md` is **not** acceptance evidence. No project skill is currently
 
 ## Clarification and questioning presentation contract
 
+**Historical pilot:** [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. These are retrospective routing hypotheses, not verified claims about missing original question wording.
+
+
+
 `aps-clarify` should preserve the proven interview format:
 
 - Stable question number and concise heading, with enough context to choose.
