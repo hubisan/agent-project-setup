@@ -1,0 +1,1044 @@
+#+STARTUP: overview
+#+OPTIONS: ^:nil toc:2 num:nil
+#+LANGUAGE: de
+#+title: agent-project-setup: konsolidierte Spezifikation
+
+*Dokumentversion:* 2.0 · *Stand:* 29. Oktober 2026\\
+*Grundlage:* 121 Grill-me-Fragen, Abschlussbestätigung und ergänzende
+Nutzerentscheidungen.\\
+*Status:* Bestätigte Architektur konsolidiert; technische Ausgestaltung
+teilweise offen. Keine Implementierung, Repository-Anlage oder
+Veröffentlichung beauftragt.\\
+*Vorgesehener Repository-Name:* =agent-project-setup= \\
+*Description:* Portable AI-agent setup for projects and knowledge bases,
+with reusable skills, workflows and Git-based context management.
+
+* 1. Leseführung und Verbindlichkeit
+:PROPERTIES:
+:CUSTOM_ID: leseführung-und-verbindlichkeit
+:END:
+Diese Fassung ersetzt die Spezifikation nach Q1--Q92 inhaltlich. Die
+frühere Datei bleibt ein historischer Stand. «2.0» ist die
+Dokumentversion, nicht eine bereits existierende Softwareversion.
+
+Das Paket umfasst drei zusammengehörende Dokumente:
+
+| Dokument                                                     | Zweck                                                                                     |
+|--------------------------------------------------------------+-------------------------------------------------------------------------------------------|
+| [[file:spezifikation.org][Diese Spezifikation]]               | Ziele, Architektur, normative Anforderungen, Workflows, Grenzen und technische Prüfpunkte |
+| [[file:entscheidungsregister.org][Entscheidungsregister]]     | Vollständige Zuordnung Q001--Q121, Ergänzungen und spätere Präzisierungen                 |
+| [[file:akzeptanz-und-umsetzung.org][Akzeptanz und Umsetzung]] | Prüfbare Szenarien, Anforderungsabdeckung, Abnahmegrenzen und Reihenfolge                 |
+
+Die Org-Fassungen sind inhaltsgleiche Lese- und Bearbeitungsexporte
+dieser Ausgabe. Sie sind kein Auftrag, in Zielprojekten jedes Dokument
+doppelt zu pflegen. Bei der Übernahme wird eine Arbeitsfassung gewählt;
+Exporte bleiben abgeleitet.
+
+*MUSS* kennzeichnet ein Abnahmekriterium im jeweiligen Funktionsumfang.
+*SOLL* kennzeichnet einen Standard, von dem begründet abgewichen werden
+kann. *KANN* kennzeichnet eine optionale Fähigkeit. Eine optionale
+Funktion muss ihren Vertrag erfüllen, sobald sie als unterstützt
+angeboten wird.
+
+Die Kennungen R01--R40 sind Anforderungen, Q001--Q121 historische
+Gesprächsentscheidungen und AK01 ff. geplante Akzeptanzprüfungen. Früher
+im Chat vorgeschlagene R93--R97 sind keine zusätzlichen Grill-Fragen;
+ihre Inhalte sind hier in R19--R21 und R26 enthalten.
+
+Spätere ausdrückliche Nutzerentscheidungen haben Vorrang vor früheren
+Vorschlägen. Aus nicht mehr sichtbaren Antwortoptionen wird kein
+angeblicher Originalwortlaut rekonstruiert. Abgeleitete
+Sicherheitsregeln konkretisieren die bestätigten Anforderungen, ohne
+zusätzliche Produkte oder Arbeitsabläufe einzuführen. Offene technische
+Varianten sind in Kapitel 12 ausgewiesen.
+
+* 2. Problem und angestrebte Lösung
+:PROPERTIES:
+:CUSTOM_ID: problem-und-angestrebte-lösung
+:END:
+** 2.1 Ausgangslage
+:PROPERTIES:
+:CUSTOM_ID: ausgangslage
+:END:
+Wissen, Pläne und Entscheidungen entstehen in Gesprächen mit
+verschiedenen KI-Anbietern. Ohne einen expliziten Arbeitsstand
+ausserhalb dieser Gespräche werden Anbieterwechsel, Sitzungswechsel und
+das Wiederaufnehmen eines Vorhabens aufwendig.
+
+=memento= enthält bereits ein gewachsenes Org-System mit Themenindizes,
+Notes, Aufgaben und Projekten. Die gezeigten Themen-Dateien sind
+Einstiegspunkte zu Notes, nicht zwingend deren eigentlicher Inhalt. Der
+Nutzer nennt rund 400 MB Gesamtumfang; eine Bestandsmessung und die
+Aufteilung in Text, Anlagen und Git-Historie liegen noch nicht vor. Es
+gibt keinen Auftrag, die Wissensbasis allein aufgrund ihrer Grösse
+aufzuteilen.
+
+Ein Thema kann als Interesse beginnen, Wissen und Brainstorming sammeln,
+zum Natural-Planning-Vorhaben werden und später ein eigenes Repository
+erhalten. Gesundheit/Patientendossier und Lernplattform sind Beispiele
+für sinnvoll eigenständige Bestände. Die Grenze wird nach Nutzen,
+Arbeitsablauf und Zugriff entschieden, nicht nach einer starren
+Themenklassifikation.
+
+** 2.2 Lösung aus Nutzersicht
+:PROPERTIES:
+:CUSTOM_ID: lösung-aus-nutzersicht
+:END:
+Der Nutzer spricht normal mit einer KI. Die KI arbeitet mit den jeweils
+zugänglichen, autorisierten Projektdateien, findet passende Inhalte,
+dokumentiert freigegebene Erkenntnisse und meldet knapp, was tatsächlich
+passiert ist. Ein neuer Agent kann auf demselben dokumentierten Stand
+weiterarbeiten.
+
+=agent-project-setup= liefert dafür einen kleinen wiederverwendbaren
+Rahmen. Er passt sich vorhandenen Strukturen an und erzwingt weder GTD
+noch memento, einen Cloud-Dienst, einen bestimmten Editor oder eine
+bestimmte KI. Das eigenständige =coding-agent-setup= kommt bei
+Softwareentwicklung hinzu.
+
+Für den Nutzer wird =memento= zusätzlich die persönliche Zentrale für
+Projektindex, Capture-INBOX, GTD und KI-Aktivitätsübersicht. Andere
+Repositories funktionieren auch ohne Zugriff auf diese Zentrale.
+
+* 3. Umfang und Ausbaustufen
+:PROPERTIES:
+:CUSTOM_ID: umfang-und-ausbaustufen
+:END:
+** 3.1 V1-A: allgemeiner, durchgängiger Kern
+:PROPERTIES:
+:CUSTOM_ID: v1-a-allgemeiner-durchgängiger-kern
+:END:
+Neue und bestehende Repositories adoptieren; Projektregeln und Metadaten
+einrichten; Org/Markdown als Standard wählen; vorhandene Struktur
+bewahren; Kontext gezielt laden; Skills mit Herkunft und Version
+verwalten; Updates kontrollieren; Ergebnisse und offene Arbeit
+dokumentieren; Sitzungswechsel und geprüfte Projekt-Auslagerung
+unterstützen. Schreibfreigaben, Zugriffsschutz und ehrliche Erfolgs- und
+Fehlermeldungen gelten von Beginn an.
+
+Erster realer Pilot ist der Menüplaner mit vorhandenem Brainstorming zu
+Rezepten, Planung und Einkaufslisten einschliesslich zusätzlicher
+Artikel. Dies ist ein Setup-Pilot, kein Auftrag zum Bau der
+Menüplaner-App.
+
+** 3.2 V1-B: optionales memento-Profil
+:PROPERTIES:
+:CUSTOM_ID: v1-b-optionales-memento-profil
+:END:
+Das persönliche Profil ergänzt Projektindex, KI-Capture, offene
+Captures, Aktivitätsjournal mit 30-Tage-Ansicht, GTD-Auswertung und
+Reviews mit vorhandenen Org-Dateien und =orgfdb=. Das persönliche
+Journal bleibt ein gesonderter, knapper Inhaltstyp. Es braucht keine
+eigene App, keinen Suchserver und keinen Hintergrunddienst des Setups.
+
+V1-A darf vorher abgenommen werden. Die memento-Funktionen dürfen erst
+nach eigenen Tests als betriebsbereit gelten. Die hier spezifizierten
+Funktionen sind nicht allein durch die Existenz von Anweisungsdateien
+bereits vorhanden.
+
+** 3.3 Bedarfsabhängige Integration und spätere Erweiterungen
+:PROPERTIES:
+:CUSTOM_ID: bedarfsabhängige-integration-und-spätere-erweiterungen
+:END:
+Die Kombination mit =coding-agent-setup= ist ein verbindliches
+Architekturziel. Der reale Integrationstest folgt, sobald ein Projekt
+beide braucht; davor keine Kompatibilität behaupten. Erweiterte Wiki-
+und Brainstorming- und Natural-Planning-Skills, umfassende
+Formatkonvertierung, Google-Drive-Migration, Kalenderintegration und
+Forgejo-spezifische Adapter folgen nach Bedarf.
+
+Ein KI-unabhängiger Git-Sync für Laptop/Termux und ein eventuell eigener
+dateibasierter Aufgaben- und Review-Tracker sind eigenständige Vorhaben.
+Sie sind keine Voraussetzung für die erste Nutzung.
+
+* 4. Begriffe und Zuständigkeiten
+:PROPERTIES:
+:CUSTOM_ID: begriffe-und-zuständigkeiten
+:END:
+| Begriff              | Bedeutung                                                                                                   |
+|----------------------+-------------------------------------------------------------------------------------------------------------|
+| Setup                | Wiederverwendbare Regeln, ausgewählte Skills und kleine Integrationshilfen; keine zentrale Wissensdatenbank |
+| Zielprojekt          | Repository oder logischer Bereich, in dem fachlich gearbeitet wird                                          |
+| Arbeitsweise         | Wiki, Vorhaben/Projekt oder Kombination; bestimmt hilfreiche Methoden, nicht eine Zwangsstruktur            |
+| Note                 | Vorhandene Wissenseinheit gemäss lokaler Konvention; nicht automatisch identisch mit einer Datei            |
+| Themenindex          | Navigation zu Notes und Bereichen, zum Beispiel die vorhandenen memento-Indizes                             |
+| Projektindex         | Kleine Übersicht über Zuständigkeiten, Einstiegspunkte und autorisierte Ablageziele                         |
+| Capture              | Aufgenommene Information oder Aufgabe; kann geklärt, offen oder im Ziel gespeichert sein                    |
+| Aktivitätsjournal    | Nachweis tatsächlicher KI-Schreibvorgänge; kein zweites Inhaltsarchiv                                       |
+| Persönliches Journal | Erlebnisse, Beobachtungen und Fortschritt des Nutzers                                                       |
+| Handoff              | Gezielte Übergabe eines Arbeitsstands; entweder zwischen Sitzungen oder als geprüfte Projektauslagerung     |
+| Adapter              | Technischer Zugang zu einem Agenten, Host, Index oder Werkzeug; keine neue fachliche Wahrheit               |
+| Indexgeneration      | Zustand der abgeleiteten orgfdb-Datenbank; weder Git-Commit noch KI-Aktivitätseintrag                       |
+
+* 5. Nutzerfälle
+:PROPERTIES:
+:CUSTOM_ID: nutzerfälle
+:END:
+1. Als Nutzer möchte ich zwischen KI-Anbietern wechseln, ohne Wissen
+   oder Entscheidungen zu verlieren.
+2. Als Besitzer eines bestehenden Wikis möchte ich dessen Notes, Indizes
+   und Links erhalten.
+3. Als Projektstarter möchte ich mit wenigen Dateien beginnen, statt
+   zuerst eine Verwaltungsstruktur aufzubauen.
+4. Als Org-Nutzer möchte ich mein Format behalten und für gemeinsam
+   genutzte Projekte Markdown wählen können.
+5. Als Nutzer möchte ich einen Formatstandard später ändern, ohne
+   automatisch alle Dokumente zu konvertieren.
+6. Als Wissensarbeiter möchte ich vorhandene Erkenntnisse ergänzen statt
+   immer neue Duplikate zu erhalten.
+7. Als Gesprächspartner möchte ich eine flüchtige Unterhaltung bei
+   Bedarf in dauerhafte Notes überführen.
+8. Als Nutzer möchte ich für bestimmte Themen das direkte Speichern
+   erlauben, ohne ständig nachgefragt zu werden.
+9. Als Nutzer möchte ich meinen Auftrag «Schreib das in Projekt X» nicht
+   erneut bestätigen müssen.
+10. Als Nutzer möchte ich unklare oder nicht direkt schreibbare Captures
+    später verlässlich wiederfinden.
+11. Als memento-Nutzer möchte ich Aktivitäten der KI zentral und kurz
+    mit Links kontrollieren.
+12. Als Nutzer möchte ich wichtige Änderungen als Git-Diff prüfen,
+    unabhängig von Emacs.
+13. Als GTD-Nutzer möchte ich Aufgaben in thematisch passenden
+    Org-Dateien belassen und trotzdem gesammelt finden.
+14. Als Nutzer möchte ich eine kleine aktuelle Liste statt des gesamten
+    Backlogs sehen.
+15. Als Nutzer möchte ich auf liegen gebliebene INBOX-, WAIT- und
+    SOMEDAY-Inhalte hingewiesen werden, ohne permanente Unterbrechungen.
+16. Als Projektverantwortlicher möchte ich ein gewachsenes Wiki-Projekt
+    ohne Verlust seiner Vorarbeit in ein eigenes Repository übergeben.
+17. Als Nutzer möchte ich im Wiki danach eindeutig erkennen, wo
+    weitergearbeitet wird.
+18. Als Entwickler möchte ich das Coding-Setup ergänzen, ohne Regeln
+    oder Skills des Projekt-Setups zu verlieren.
+19. Als Nutzer möchte ich risikoarme Arbeit unkompliziert sammeln und
+    committen, aber riskante Änderungen vorher prüfen.
+20. Als Nutzer möchte ich das Hauptmodell für Planung und Review sowie
+    ein separates Umsetzungsprofil bestimmen.
+21. Als Nutzer möchte ich das bestehende orgfdb nutzen, statt dieselbe
+    Funktion nochmals zu entwickeln.
+22. Als Besitzer vertraulicher Daten möchte ich selbst festlegen, welche
+    Umgebung welche Inhalte lesen und übermitteln darf.
+23. Als Nutzer von Laptop und Android möchte ich offene Dateien und
+    portable Links statt einer Emacs-Pflicht.
+24. Als Nutzer möchte ich geeignete Office- und PDF-Inhalte als Org
+    lesen können, ohne unbemerkt wichtige Originalinformationen zu
+    verlieren.
+25. Als Projektverantwortlicher möchte ich Verbesserungen am
+    Arbeitsablauf ans Setup zurückmelden, ohne private Projektdaten
+    mitzusenden.
+26. Als neuer Agent möchte ich erkennen, was entschieden, nur
+    vorgeschlagen, getestet, ungetestet, gespeichert oder noch offen
+    ist.
+
+* 6. Architektur
+:PROPERTIES:
+:CUSTOM_ID: architektur
+:END:
+** 6.1 Bausteine
+:PROPERTIES:
+:CUSTOM_ID: bausteine
+:END:
+| Baustein                 | Verantwortung                                                                                      | Gehört ausdrücklich nicht dazu                                                 |
+|--------------------------+----------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------|
+| agent-project-setup      | Adoption, Kontext, Skills, Updates, Handoffs, Regeln für Schreiben und Berichten                   | Persönliche Notes, zentrale Benutzerkonten, Pflicht-GTD                        |
+| Zielrepository           | Fachwissen, Projektregeln, Ziele, Entscheidungen, gewählte Aufgabenquelle                          | Automatischer Zugriff auf alle anderen Repositories                            |
+| memento-Profil           | Persönlicher Projektindex, Capture-INBOX, GTD und Journale                                         | Allgemeine Pflichtabhängigkeit des Setups                                      |
+| orgfdb                   | Lokaler, aus Org-Dateien abgeleiteter Such- und Strukturindex                                      | Massgebende Inhaltsdatenbank, Capture-Schreibdienst, revisionssicheres Journal |
+| Agent- und Host-Adapter  | Lesen, Schreiben, Modellwahl und optionale Git- und Host-Funktionen gemäss tatsächlicher Fähigkeit | Garantierte Rechte in beliebigen Browser-Chats                                 |
+| coding-agent-setup       | Engineering-Workflow bei Softwareentwicklung                                                       | Besitzer aller allgemeinen Projektregeln                                       |
+| Externe Begleitwerkzeuge | Git-Sync, Backups und später Kalender                                                              | Heimliche Hintergrundarbeit des Chat-Agenten                                   |
+
+** 6.2 Massgebende Quellen
+:PROPERTIES:
+:CUSTOM_ID: massgebende-quellen
+:END:
+Die Org- und Markdown-Dateien des zuständigen Bereichs sind fachlich
+massgebend. =orgfdb=, Agenten-Kontext und exportierte Ansichten sind
+abgeleitet. Das Projektverzeichnis sagt, *wo* weitergearbeitet wird; es
+kopiert nicht den gesamten Projektstand.
+
+Persönliche GTD-Aufgaben liegen in memento. Technische Tickets eines
+eigenständigen Projekts können im dort gewählten Tracker bleiben. Eine
+memento-Aufgabe wie «Einkaufslisten-Konzept prüfen» verweist auf das
+Projekt; sie ist keine zweite Kopie aller Implementierungstickets. Diese
+Bestände haben unterschiedliche Zwecke und bekommen keine automatische
+bidirektionale Statussynchronisation.
+
+Nach einer Auslagerung ist das neue Repository für den übergebenen
+Projektumfang massgebend. Allgemeines Wissen und historischer Ursprung
+können in memento bleiben. Der Umfang dieser Grenze wird im
+Übergabevermerk benannt.
+
+** 6.3 Projektkonfiguration und Index
+:PROPERTIES:
+:CUSTOM_ID: projektkonfiguration-und-index
+:END:
+Ein Projekt hat eine zentrale Konfiguration. Semantisch benötigt werden:
+Projektidentität und Name, Arbeitsweise, Privat/Geschäftlich,
+Schutzstufe, Dokumentationsstandard, Aufgabenquelle, Einstiegspunkt und
+installierte Setup-Versionen. Weitere Felder wie Capture-Regeln, lokale
+Skills und Modellprofile werden nur bei Bedarf verwendet. Konkretes
+Schema und Dateiname sind TP01.
+
+Unterbereiche erben Standards und können Format, Aufgabenquelle und
+eigene Regeln gezielt ergänzen. Eine lokale Vorgabe darf keine technisch
+fehlenden Zugriffe herstellen oder übergeordnete Schutzgrenzen
+stillschweigend lockern.
+
+Der *persönliche Projektindex liegt in memento*. Ein Eintrag enthält nur
+die für Zuordnung nötigen Angaben: stabile Projektkennung, kurzer Zweck,
+Zuständigkeit bzw. Abgrenzung, Einstieg/Repository-Verweis und zulässige
+Zugriffs- und Capture-Information. Lokale Clone-Pfade können je Gerät
+abweichen; sie sind keine unveränderliche Projektidentität. Diagnosen,
+Journalinhalte oder Geheimnisse gehören nicht in Routing-Metadaten.
+
+Die eigene Projektkonfiguration entscheidet über den Bereich; ein
+veralteter Indexeintrag darf keine weniger strengen Regeln erzwingen.
+Ein zugriffsbeschränkter Agent bekommt höchstens einen freigegebenen
+Auszug. Ein zweites manuell gepflegtes globales Register neben memento
+wird nicht eingeführt.
+
+** 6.4 Dateiverantwortung und Koexistenz
+:PROPERTIES:
+:CUSTOM_ID: dateiverantwortung-und-koexistenz
+:END:
+=AGENTS.md= gehört dem Zielprojekt. Es enthält Projektregeln und kurze
+Verweise auf die jeweiligen Setup-Regeln. Beide Setups haben getrennte
+Besitzbereiche, Herkunftsnachweise und Versionsstände. Adapterdateien
+dürfen nicht stillschweigend zu konkurrierenden Anweisungsquellen
+werden.
+
+Ein Besitzvertrag unterscheidet mindestens: projekt-eigene Inhalte, nur
+initial bereitgestellte Gerüste, setup-verwaltete Dateien und
+abgeleitete Adapter. Gemeinsame Skill-Namen, Lockfiles, Lizenzdateien
+und Agentenpfade benötigen explizite Konfliktbehandlung. Ein vorhandener
+Pfad ist keine Erlaubnis zum Überschreiben.
+
+Das aktuelle Coding-Manifest nennt unter anderem gemeinsame
+Skill-Verzeichnisse, ein Skill-Lockfile, Lizenzhinweise und
+Agentenregeln. Deshalb ist die technische Koexistenz noch nachzuweisen;
+sie ergibt sich nicht allein aus zwei getrennten Repository-Namen. [S2]
+
+* 7. Verbindliche Anforderungen
+:PROPERTIES:
+:CUSTOM_ID: verbindliche-anforderungen
+:END:
+** 7.1 Grundlage und Adoption
+:PROPERTIES:
+:CUSTOM_ID: grundlage-und-adoption
+:END:
+*R01 -- Eigenständige Setups.* Beide Setups MÜSSEN einzeln
+funktionieren. Ihre Kombination MUSS ohne Vererbung oder
+Pflichtinstallation des anderen möglich sein. Nötige Änderungen am
+Coding-Setup MÜSSEN rückwärtskompatibel und separat nutzbar bleiben.
+
+*R02 -- Repository als Arbeitsstand.* Bestätigte Projektinformationen
+MÜSSEN in zugänglichen Projektdateien nachvollziehbar sein.
+Gesprächsgedächtnis ersetzt diese nicht. Pro fachlichem Inhalt MUSS klar
+sein, welcher Ort ihn aktuell pflegt.
+
+*R03 -- Bestand und Minimalität.* Adoption MUSS bestehende Notes,
+Indexsysteme, Namenskonventionen und gemischte Inhalte bewahren. Sie
+DARF keine umfassende neue Ordnerstruktur oder Dokumentmetadatenpflicht
+erzwingen. Ein vorhandenes README.org wird nicht allein aus
+Kompatibilitätsvermutung ersetzt.
+
+*R04 -- Arbeitsweisen und Teilbereiche.* Wiki, Projekt und Kombination
+MÜSSEN unterstützt werden. Projekte dürfen innerhalb eines Wikis
+beginnen und dort bleiben. Zusatzregeln für Teilbereiche entstehen nur
+bei Bedarf.
+
+*R05 -- Konfiguration.* Projektmetadaten MÜSSEN zentral, eindeutig und
+validierbar sein. Unterbereichs-Overrides MÜSSEN ihren Geltungsbereich
+erkennen lassen. Unbekannte oder widersprüchliche sicherheitsrelevante
+Angaben dürfen nicht still auf einen permissiven Standard fallen.
+
+*R06 -- Formatwahl.* Bei Adoption MUSS Org oder Markdown als Standard
+für neue inhaltliche Dokumente wählbar sein. Technisch vorgegebene
+Agentendateien behalten ihr erforderliches Format. Vorhandene Org- und
+Markdown-Mischbestände bleiben zulässig.
+
+*R07 -- Formatwechsel.* Standardwechsel MUSS ohne Inhaltsmigration
+möglich sein. Eine spätere Migration MUSS Vorschau, Verlust- und
+Sonderfallbericht, Linkprüfung, explizite Freigabe und
+wiederherstellbaren Ausgangsstand haben. Der Umfang ist Datei, Bereich
+oder Repository; Org-spezifische Semantik wird nicht still verworfen.
+
+*R08 -- Gemeinsamer Einstieg.* Setup-Adoption MUSS nur die eigenen
+AGENTS-Verweise kontrolliert ergänzen. Fremde Inhalte und
+projektspezifische Regeln bleiben erhalten. Widersprüche werden
+offengelegt, nicht durch zufällige Ladereihenfolge entschieden.
+
+*R09 -- Adoption.* Vor dem Schreiben MÜSSEN Bestand, Rechte, Format,
+vorhandene Regeln und Konflikte erfasst werden. Der Integrationsplan
+MUSS prüfbar sein. Wiederholte Adoption DARF keine doppelten Regeln,
+Links oder Skills erzeugen.
+
+*R10 -- Updates.* Quelle und installierte Version MÜSSEN feststehen.
+Updates zeigen Unterschiede und lokale Abweichungen; Anwendung erst nach
+Zustimmung. Bei Konflikten keine stillen Überschreibungen, bei
+Teilfehlern kein behaupteter Gesamtabschluss. Wiederholung und Rücknahme
+eigener Änderungen MÜSSEN möglich sein.
+
+*R11 -- Skills.* Ein kleiner Kern MUSS genügen. Optionale, externe und
+rein lokale Skills MÜSSEN getrennt nach Herkunft, Version und
+Zuständigkeit behandelbar sein. Vorhandene Matt-Pocock- und
+AIHero-Skills werden auf fachliche Eignung und Abhängigkeiten geprüft;
+Coding-Annahmen werden nicht in Wikis erzwungen. Eigene Skills sind
+erlaubt, aber keine Pflicht für jede Kleinigkeit.
+
+** 7.2 Wissen, Planung und GTD
+:PROPERTIES:
+:CUSTOM_ID: wissen-planung-und-gtd
+:END:
+*R12 -- Wissenspflege.* Vor neuem Inhalt SOLL passend gesucht werden.
+Bestehende Notes werden gezielt ergänzt; Links nur bei sachlicher
+Relevanz. Externe Tatsachen MÜSSEN nachvollziehbare Quellen haben.
+Beobachtung, Hypothese, Entscheidung und fachliche Aussage bleiben
+unterscheidbar. Widersprüche und verworfene Alternativen werden nicht
+durch Glätten der Texte verborgen.
+
+*R13 -- Planung.* Ein Wiki-Interesse wird nicht automatisch zum Projekt.
+Der Nutzer bestätigt diesen Schritt. Optionales Natural Planning
+orientiert sich an Zweck und Prinzipien, Ergebnisbild, Brainstorming,
+Organisation und nächsten Aktionen; Tiefe und Reihenfolge richten sich
+nach dem Bedarf. Die Methode wird anhand realer Nutzung verbessert,
+nicht als starre Pflichtmaske eingeführt. [S9]
+
+*R14 -- Aufgabenquelle.* Jeder Aufgabenbestand MUSS eine massgebende
+Quelle haben. Das persönliche GTD des Nutzers liegt ausschliesslich in
+memento; Aufgaben können in beliebigen passenden Org-Dateien stehen.
+Externe Projektaufgaben werden verlinkt, nicht automatisch kopiert.
+Allgemeine Zielprojekte dürfen weiterhin eigene Org-, Markdown- oder
+Tracker-Aufgaben haben.
+
+*R15 -- TODO-Zustände.* Das memento-Profil MUSS die vorhandenen Keywords
+=INBOX=, =SOMEDAY=, =TODO=, =NEXT=, =WAIT=, =DONE=, =CANCEL=
+respektieren. Eine aktuelle Übersicht trennt ausführbare NEXT-Aktionen
+von nachzuverfolgenden WAIT-Einträgen. Explizit zurückgestellte Inhalte
+erscheinen erst zur Wiedervorlage; echte fällige Verpflichtungen werden
+nicht still durch einen Filter verschluckt. DONE/CANCEL bleiben
+abgeschlossen. Konkrete Snooze- und Agenda-Abbildung ist TP06; kein
+neues TODO-Keyword wird still erfunden.
+
+*R16 -- Reviews.* INBOX-Klärung bei Bedarf, SOMEDAY-Prüfung seltener und
+ein gelegentlicher Vollständigkeitsblick MÜSSEN unterstützt werden.
+Offene Captures werden bei passenden Gesprächen nur genannt, wenn ihre
+Liste verfügbar ist. Review-Hinweise sind keine automatisch
+eingerichteten Erinnerungen. Ein zeitgesteuerter Lauf braucht
+gesonderten Auftrag und eine tatsächlich eingerichtete Ausführung.
+
+** 7.3 Kontext und Index
+:PROPERTIES:
+:CUSTOM_ID: kontext-und-index
+:END:
+*R17 -- orgfdb.* Org-Dateien bleiben die Quelle, SQLite bleibt ein
+regenerierbarer lokaler Index. Rebuild und Watch SOLLEN genutzt werden,
+statt eine zweite Suchtechnik zu bauen. Indexfehler, veraltete Stände
+und nicht indexierte Dateien MÜSSEN sichtbar sein. Vor einer Änderung
+MUSS die echte Zieldatei gelesen werden. =rg= oder =ug= können eng
+begrenzte Textsuchen ergänzen. Datenbankdateien werden standardmässig
+nicht zwischen Geräten versioniert. [S3--S5]
+
+*R18 -- Kontextbudget.* Ein normaler Capture- oder Aufgabenaufruf DARF
+nicht den gesamten Wiki-Text laden. Reihenfolge: kleiner Einstieg,
+Zuständigkeit, lokale/werkzeuggestützte Suche, begrenzte Treffer,
+relevante Ausschnitte. Binäre Anlagen, Archive und andere Projekte
+werden nicht vorsorglich einbezogen. Begrenzte oder unvollständige
+Suchergebnisse MÜSSEN als solche erkennbar bleiben.
+
+*R19 -- Projektverzeichnis.* Persönlicher Index in memento,
+Zielrepositories eigenständig. Eine eindeutige aktuelle Chat-Vorgabe
+darf die Ablage bestimmen; sonst passende Indexzuständigkeit und
+Zielregeln prüfen. Bei Mehrdeutigkeit INBOX oder gezielte Rückfrage.
+Automatisches Auffinden ist nur bei tatsächlichem Zugriff möglich. Der
+Index ist keine Zugriffsberechtigung.
+
+** 7.4 Capture und Schreiben
+:PROPERTIES:
+:CUSTOM_ID: capture-und-schreiben
+:END:
+*R20 -- Schreibfreigabe.* Drei Verhaltensweisen MÜSSEN unterscheidbar
+sein: situativ vorschlagen, innerhalb freigegebener Grenzen automatisch
+speichern und auf expliziten Auftrag schreiben. Eine Freigabe kann
+Projekt, Thema, Inhaltstyp, Operation und Sitzung betreffen. Eine
+Sitzungsfreigabe wird ohne Auftrag nicht dauerhaft. Hinzufügen erlaubt
+weder Löschen noch Massenumbau. Ein klarer Speicherauftrag ist bereits
+Freigabe für den benannten Umfang; nur ungelöste Risiken oder
+Zuständigkeiten rechtfertigen erneutes Fragen.
+
+*R21 -- Persistente offene Captures.* Ohne Zielzugriff MUSS ein Capture,
+soweit erlaubt, in mementos INBOX vorgemerkt werden. Ist auch sie nicht
+schreibbar, wird ein exportierbarer Eintrag angeboten. Die KI MUSS
+zwischen nur im Chat vorbereitet, exportiert, in INBOX gespeichert und
+ins Ziel übernommen unterscheiden. Eine herunterladbare Datei ist noch
+kein Eintrag im Nutzerrepository. Spätere Wiederaufnahme ist nur aus
+erreichbarer persistenter Ablage möglich.
+
+*R22 -- Sichere Wiederholung.* Schreibvorgänge MÜSSEN ihren Umfang
+prüfen und fremde oder zwischenzeitliche Änderungen schützen. Erneute
+Übernahme desselben Captures DARF keinen Doppeleintrag erzeugen. Ein
+schmaler Herkunfts- und Operationsnachweis genügt; keine neue zentrale
+Datenbank ist erforderlich. Bei Teilfehlern ist der tatsächliche Zustand
+zu melden. Weder ungespeicherte Nutzerdateien noch fremde Git-Änderungen
+werden still bereinigt.
+
+** 7.5 Journale und Diff
+:PROPERTIES:
+:CUSTOM_ID: journale-und-diff
+:END:
+*R23 -- Zwei Journale.* Das Aktivitätsjournal in memento SOLL
+tatsächliche KI-Änderungen mit Zeitstempel, Kurzbeschreibung,
+Zielprojekt und Dokument- und Heading-Link zeigen; Commitbezug optional.
+Es kopiert keine vollständigen Inhalte. Das persönliche Journal
+dokumentiert nur entsprechend beauftragte Erlebnisse und Beobachtungen,
+ebenfalls knapp und mit Verweisen. Beide Zwecke bleiben getrennt. Nicht
+jeder Chat erzeugt einen Eintrag.
+
+*R24 -- Aufbewahrung.* Die normale Aktivitätsansicht zeigt 30 Tage.
+Ältere Einträge werden archiviert, nicht standardmässig gelöscht. Diese
+Regel gilt nicht pauschal für persönliche Journale, offene Captures oder
+fachliche Daten. Archivierung erfolgt bei einem realen Pflegeaufruf;
+ohne eingerichteten Scheduler keine Hintergrundgarantie. Archivierte
+Links und Nachweise bleiben erreichbar.
+
+*R25 -- Diff.* Git ist die Änderungshistorie. Journalreferenzen SOLLEN
+Repository, Datei und gegebenenfalls Commit festhalten. Diffs können im
+Terminal, Editor oder Host angezeigt werden; Emacs ist nicht
+Voraussetzung. Wichtige uncommittete Änderungen erhalten bei Bedarf eine
+aktuelle Vorschau, aber keine eigene dauerhafte Snapshot-Verwaltung. Ein
+Sammelcommit zeigt die gesamte Arbeitseinheit und nicht zwingend nur
+einen Journaleintrag. [S8]
+
+** 7.6 Zusammenarbeit, Übergaben und Modelle
+:PROPERTIES:
+:CUSTOM_ID: zusammenarbeit-übergaben-und-modelle
+:END:
+*R26 -- Modellrouting.* Planung und Review bleiben in der Hauptsession
+mit dem vom Nutzer gewählten Modell und Denkaufwand. Klar abgegrenzte
+geeignete Umsetzung KANN an kosteneffiziente Subagenten delegiert
+werden. Umsetzungsprofile wie *Luna High* oder *Sol Medium* MÜSSEN
+austauschbar sein; dies sind Nutzer- und Umgebungsprofile, keine
+unveränderlichen API-IDs oder Preisgarantien. xHigh/max ist nur bei
+Unterstützung und bewusster Freigabe zulässig. Kleine Arbeit ohne
+Delegationsnutzen bleibt in der Hauptsession. Subagenten erben keine
+erweiterten Rechte; der Hauptagent prüft Resultat und verantwortet
+Abschluss/Git-Aktionen.
+
+*R27 -- Austausch.* Wiederverwendbares Wissen darf zur Übernahme in ein
+anderes Wiki oder Setup vorgeschlagen werden. Quell- und
+Zielzuständigkeit und Schutzbereich MÜSSEN geprüft werden. Die
+Routinerlaubnis für ein Journal ersetzt keine Freigabe zum Transfer
+vertraulicher Inhalte oder zum Vermischen von Privat und Geschäftlich.
+
+*R28 -- Projektauslagerung.* Der Handoff MUSS den relevanten Umfang
+kuratieren: Ziele, Erkenntnisse, Entscheidungen, Quellen, verworfene
+Alternativen, Feature-Ideen, offene Fragen und nächste Schritte.
+Herkunft und Links bleiben nachvollziehbar. Erst nach Prüfung und
+Nutzerbestätigung wird das Ziel massgebend. Das Wiki bleibt erhalten und
+erhält datierten Link, Umfang und Hinweis zum Weiterarbeiten. Der
+Projektindex wird entsprechend aktualisiert; keine verdeckte doppelte
+Projektpflege.
+
+*R29 -- Sitzungswechsel.* Ein neuer Agent MUSS mit den Projektdateien
+beginnen können, ohne die gesamte Chat-Historie zu benötigen. Ein
+portables Handoff wird bei Bedarf angeboten, nicht automatisch erzeugt.
+Spontane Chats können auf ausdrücklichen Auftrag in Projektkontext
+überführt werden; blosse Ideen werden dabei nicht zu bestätigten
+Entscheidungen.
+
+*R30 -- Arbeitsabschluss und Git.* Zusammengehörige Änderungen SOLLEN
+nach einem sinnvollen Schritt gesammelt werden. Der Bericht nennt knapp
+Dateien/Ziele, Inhalt, Prüfungen und offene Punkte. Datei geschrieben,
+committet und gepusht sind verschiedene Zustände. Kleine risikoarme
+Änderungen dürfen bei passender Projektregel direkt auf main;
+grössere/riskante über Branch und Review. Issues/PRs sind kein Zwang für
+jeden Satz, und ein gehosteter PR ist ohne passenden Host nicht
+zwingend. Kein endloses Nachbessern oder teure Eskalation ohne Freigabe.
+
+*R31 -- Verbesserungsschleife.* Wiederverwendbare Arbeitsverbesserungen
+werden zunächst im Projekt-Backlog gesammelt. Die KI schlägt zuständiges
+Setup oder Skill vor. Vor Übernahme MÜSSEN Zuordnung, Verallgemeinerung
+und Entfernung von Projektdaten geprüft werden. Kein automatisches
+Cross-Repo-Schreiben.
+
+** 7.7 Sicherheit, Migration und Betrieb
+:PROPERTIES:
+:CUSTOM_ID: sicherheit-migration-und-betrieb
+:END:
+*R32 -- Schutzgrenzen.* Privat/Geschäftlich und
+öffentlich/privat/vertraulich sind unabhängige Angaben. Projektregeln,
+Indexauszüge und Kontextpakete dürfen keine unzulässigen
+Datenweitergaben auslösen. Neue externe Übermittlung vertraulicher
+Inhalte erfordert Freigabe. AGENTS-Regeln sind keine technische
+Zugriffssperre. Werkzeuge und Credential-Scope MÜSSEN die erlaubten
+Bereiche begrenzen. Gefundene Notes, Quellen und Anhänge gelten als
+Inhalte, nicht automatisch als ausführbare Anweisungen.
+
+*R33 -- Originale und Speicher.* Migration SOLL Umfang, Duplikate und
+Löschkandidaten sichtbar machen. Geeignete PDF- und DOCX-Inhalte dürfen
+ohne Office-Programm nach Org aufbereitet werden; Bilder bei geeignetem
+Qualitätsprofil beispielsweise nach WebP. Original und Ableitung bleiben
+verknüpft. Originale erst nach Qualitätsprüfung und Freigabe löschen.
+Tabellen, Bilder, Layoutbedeutung und Metadaten dürfen nicht unbemerkt
+verloren gehen. Git/LFS/externe Ablage werden nach tatsächlichem Bestand
+und Schutzbedarf gewählt.
+
+*R34 -- Sync und Sicherung.* Der KI-unabhängige Git-Sync ist ein
+getrenntes Vorhaben. Lokale Änderungen prüfen, sichere Merge- und
+Rebase-Schritte automatisieren, Konflikte stoppen; keine stille
+Umschreibung geteilter Historie. Laptop- und Handy-Clones sind nützliche
+Kopien, ersetzen aber nicht die Betrachtung von Wiederherstellung,
+Anhängen, LFS und Host-Metadaten. Backups und späteres
+Forgejo-Selbsthosting sind gesondert zu planen.
+
+*R35 -- Portabilität.* Inhalte MÜSSEN mit offenen Dateien und Git
+nutzbar bleiben. Linux/Bash ist die Zielumgebung; Android/Termux ist für
+den persönlichen Workflow relevant und gesondert zu testen. Keine neuen
+WSL-, Windows- oder PowerShell-Anleitungen in dieses Setup aufnehmen.
+Emacs bleibt optional. Neue Org-Heading-Links SOLLEN Dateikontext plus
+CUSTOM_ID verwenden; innerhalb einer Datei genügt der Custom-Anker.
+Bestehende ID-Links bleiben erhalten, bis eine bewusste Migration sie
+behandelt. Konkrete Viewer- und Host-Unterstützung wird geprüft, nicht
+vorausgesetzt. [S6]
+
+*R36 -- Kalender.* Eine spätere Integration KANN ausgewählte
+zeitgebundene Termine an Google Calendar oder einen anderen Adapter
+geben. Keine pauschale Abbildung jedes TODO als Termin, keine
+unbestellte Kalenderschreiboperation, kein Auftrag zum Kalenderersatz.
+Terminidentität, Zeitzone und Konfliktregeln sind vor Implementierung
+dieses Moduls zu definieren.
+
+*R37 -- Qualität.* Struktur, Format, Metadaten, Links, Besitzgrenzen und
+relevante fachliche Aussagen MÜSSEN geprüft werden. Nicht ausgeführte
+Tests werden explizit als ungetestet ausgewiesen. Fehlende Werkzeuge
+dürfen einen einfachen Text- und Datei-Fallback ermöglichen, nicht einen
+erfundenen Erfolg.
+
+*R38 -- Schlanker Ausbau.* Der Kern MUSS ohne memento, orgfdb, Kalender
+oder eigene GUI funktionieren. Weitere Methoden entstehen schrittweise
+aus realer Nutzung. Menüplaner zuerst, danach memento;
+Coding-Kombination nach tatsächlichem Bedarf.
+
+*R39 -- Kommunikation.* Nutzertexte SOLLEN kurz, klar und vollständig
+sein: keine Wiederholungen, langen Standardberichte oder unnötigen
+Rückfragen. Wesentliche Unsicherheit, Verluste, Risiken und offene
+Prüfungen bleiben sichtbar. Dieses Dokument verwendet Schweizer
+Hochdeutsch; technische Agentenanweisungen folgen der vereinbarten
+englischen Setup-Konvention. Inhalte eines Zielprojekts folgen dessen
+Sprache.
+
+*R40 -- Kontextpakete.* Ein portables Paket MUSS Zweck, Quelle,
+Arbeitsstand, relevante Ausschnitte, offene Entscheidungen und
+gegebenenfalls Basisversion eines Änderungsvorschlags erkennen lassen.
+Es ist kein zweiter massgebender Projektstand. Vor Anwendung ist auf
+zwischenzeitliche Änderungen und Berechtigung zu prüfen; fehlender
+Zugriff wird ehrlich gemeldet.
+
+* 8. Workflows
+:PROPERTIES:
+:CUSTOM_ID: workflows
+:END:
+** WF01: Projekt adoptieren
+:PROPERTIES:
+:CUSTOM_ID: wf01-projekt-adoptieren
+:END:
+Bestand und vorhandene Regeln lesen; tatsächliche Werkzeuge/Rechte
+feststellen; Metadaten und Format nach bereits bekannten Vorgaben
+vorbelegen, fehlende Entscheidungen gezielt klären. Integrationsplan mit
+Besitzbereichen, Konflikten und minimalen Dateien zeigen. Nach Freigabe
+nur diese Änderungen vornehmen, prüfen und knapp berichten. Eine
+bestehende Projektgeschichte oder Note-Struktur wird nicht vorsorglich
+reorganisiert.
+
+** WF02: Sitzung aufnehmen und Kontext begrenzen
+:PROPERTIES:
+:CUSTOM_ID: wf02-sitzung-aufnehmen-und-kontext-begrenzen
+:END:
+Projekt-eigenen Einstieg lesen, Aufgabe und Bereich bestimmen, relevante
+Regeln nachladen. Bei Bedarf den zugänglichen Projektindex oder orgfdb
+abfragen. Nur Treffer und konkrete Zielabschnitte laden. Ein gesetzter
+Chat-Fokus gilt für die vereinbarte Sitzung; keine automatische
+Übertragung auf andere Chats. Fachlich geklärte Entscheidungen nicht
+erneut interviewen.
+
+** WF03: Information direkt erfassen
+:PROPERTIES:
+:CUSTOM_ID: wf03-information-direkt-erfassen
+:END:
+Informationstyp erkennen, vorhandene Note/Protokollstelle suchen und
+Ablagezuständigkeit prüfen. Expliziten Auftrag bzw. passende
+Schreibregel anwenden. Inhalt knapp und ohne erfundene Details
+vorbereiten, aktuelle Zieldatei gegen die gelesene Basis prüfen, gezielt
+schreiben und nachlesen. Passenden Link und Aktivitätseintrag erzeugen,
+soweit autorisiert. Zusammengehörige Änderungen später gesammelt
+committen; Dateispeicherung nicht mit Push gleichsetzen.
+
+Beispiel: «Alles zum Zeitbudget in diesem Chat darfst du direkt
+protokollieren» erlaubt passende neue Zeitbudget-Einträge. Es erlaubt
+keine ungefragte Umstrukturierung alter Aufzeichnungen oder Übernahme in
+einen anderen Schutzbereich.
+
+** WF04: Unklarer oder nicht schreibbarer Capture
+:PROPERTIES:
+:CUSTOM_ID: wf04-unklarer-oder-nicht-schreibbarer-capture
+:END:
+| Zustand                      | Aussage und nächster Schritt                                           |
+|------------------------------+------------------------------------------------------------------------|
+| Nur im Chat vorbereitet      | Kein Persistenzversprechen; Ziel und Kurzinhalt nennen                 |
+| Export erzeugt               | Datei/Eintrag zur Übergabe verfügbar; noch nicht im Nutzerrepository   |
+| In memento-INBOX gespeichert | Durable Vormerkung mit Ziel, Herkunft, offenem Punkt und lokalem Link  |
+| Im Ziel gespeichert          | Zieldatei nachgeprüft; konkreten Ort nennen                            |
+| In Git versioniert           | Zusätzlicher Commitnachweis, nicht mit dem Speichervorgang verwechseln |
+
+Ein Capture enthält nur die notwendigen Angaben: Inhalt, Art,
+Zielvorschlag, Herkunft/Zeit, Freigabestatus und gegebenenfalls
+Wiedererkennungskennung. Kein klinischer oder geschäftlicher Inhalt wird
+allein wegen eines fehlenden Zielzugriffs in eine unpassende INBOX
+verschoben. Bei nächstem Zugriff offene Liste prüfen und passende
+Einträge anbieten; eine abgeschlossene Übernahme mit Zielverweis
+markieren statt erneut anzulegen.
+
+** WF05: Wiki pflegen und ein Vorhaben entwickeln
+:PROPERTIES:
+:CUSTOM_ID: wf05-wiki-pflegen-und-ein-vorhaben-entwickeln
+:END:
+Fragestellung und vorhandenes Wissen erfassen, Quellen/Beobachtungen
+unterscheiden, bestehende Notes ergänzen, Querverweise setzen und
+Unsicherheiten festhalten. Die KI darf eine Projektentstehung
+vorschlagen. Erst nach Bestätigung Zweck/Ergebnisbild und nächste
+Schritte festhalten. Bereits vorhandenes Brainstorming bleibt
+verwertbarer Input, nicht Anlass für einen Neustart.
+
+** WF06: Persönliches GTD und Reviews
+:PROPERTIES:
+:CUSTOM_ID: wf06-persönliches-gtd-und-reviews
+:END:
+«Was steht an?» liest eine lokale, aktuelle Abfrage statt das gesamte
+Wiki. NEXT und relevante nicht zurückgestellte WAIT-Fälle getrennt
+darstellen; feststehende Fälligkeiten sichtbar lassen. Links führen
+direkt zur massgebenden Org-Stelle. INBOX einzeln klären:
+Referenzwissen, konkrete Aufgabe, WAIT, SOMEDAY, Projektidee oder
+bewusst verwerfen. Verwerfen bleibt eine freigabepflichtige Änderung,
+soweit keine passende Regel existiert.
+
+Gelegentlicher Review prüft zusätzlich alte INBOX-Einträge, offene
+Captures, verwaiste Projekte ohne nächste Aktion, vergessene WAIT-Fälle
+und SOMEDAY. Er erzeugt keine überlange tägliche Gesamtliste und
+erfindet keine Fälligkeiten.
+
+** WF07: Aktivitäten dokumentieren und archivieren
+:PROPERTIES:
+:CUSTOM_ID: wf07-aktivitäten-dokumentieren-und-archivieren
+:END:
+Nach erfolgreichem Schreiben einen knappen autorisierten Journaleintrag
+erstellen. Wenn das Ziel gespeichert, memento aber nicht erreichbar ist,
+bleibt die fachliche Änderung erfolgreich und der Journalnachweis offen;
+beides getrennt melden. Beim nächsten zugelassenen Abgleich den Nachweis
+anhand erreichbarer Evidenz nachführen. Ohne persistente Evidenz keine
+automatische Nachholung garantieren.
+
+Die normale Ansicht begrenzt sich auf 30 Tage. Alte Einträge
+nachvollziehbar archivieren und Doppelungen vermeiden. Eigene
+Journalpflege erzeugt keine rekursive Kette neuer Journalereignisse. Ein
+Journal im selben Commit kann dessen erst danach bekannte Hash-ID nicht
+selbst enthalten; Referenzen werden bei Bedarf anschliessend ergänzt
+oder aus Git abgeleitet, nicht durch eine endlose Commit-Schleife.
+
+** WF08: Setup und Skills aktualisieren
+:PROPERTIES:
+:CUSTOM_ID: wf08-setup-und-skills-aktualisieren
+:END:
+Installierte Quelle/Version mit gewünschtem Stand vergleichen. Geplante
+Änderungen, lokale Anpassungen und gemeinsame Namespaces prüfen. Nach
+Zustimmung nur eigene verwaltete Dateien aktualisieren. Projektregeln,
+lokale Skills und fremde Setup-Dateien erhalten. Wiederholte Ausführung
+bleibt ohne unnötige Diffs; ein Abbruch hinterlässt einen erklärten
+reparierbaren Stand.
+
+** WF09: Projekt aus memento auslagern
+:PROPERTIES:
+:CUSTOM_ID: wf09-projekt-aus-memento-auslagern
+:END:
+Umfang gemeinsam festlegen und relevante Notes, Quellen, Konzepte, Ideen
+und offene Arbeit gezielt identifizieren. Ein Übergabeinventar
+dokumentiert Herkunft, Ziel und bewusst nicht übernommene Inhalte.
+Links, Schutzbereich und Aufgabenverantwortung prüfen. Ziel aufbauen,
+Arbeitsstand nachlesen und Nutzerabnahme einholen.
+
+Erst dann den Weiterarbeitsort für den benannten Umfang umstellen. Wiki
+mit Datum/Zeit, Ziel-Link und Hinweis markieren, Projektindex
+aktualisieren und allfällige offene Restarbeiten sichtbar lassen. Das
+Wiki wird nicht automatisch gelöscht. Zwei Git-Repositories bilden keine
+gemeinsame Transaktion: misslingt etwa der Quellvermerk, ist die
+Übergabe noch nicht abgeschlossen, auch wenn Zielinhalte bereits
+existieren.
+
+** WF10: Sitzung abschliessen oder Agent wechseln
+:PROPERTIES:
+:CUSTOM_ID: wf10-sitzung-abschliessen-oder-agent-wechseln
+:END:
+Dateien und bestätigte Entscheidungen aktuell halten, Prüfstatus und
+nächsten Schritt kurz nennen. Ein kompaktes Handoff nur anbieten bzw.
+auf Auftrag erstellen. Bereits zugänglicher Repository-Kontext hat
+Vorrang vor einem weiteren umfangreichen Textpaket. Ein fehlender
+Browser-Schreibzugriff führt zu einem geprüften Vorschlag oder Capture,
+nicht zur Behauptung einer ausgeführten Änderung.
+
+** WF11: Arbeit delegieren und abschliessen
+:PROPERTIES:
+:CUSTOM_ID: wf11-arbeit-delegieren-und-abschliessen
+:END:
+Hauptagent grenzt Ergebnis, Dateien/Bereiche, Quellen, erlaubte
+Operationen und Prüfungen ab. Nur unabhängige Arbeit parallel
+delegieren; gemeinsam bearbeitete Dateien koordinieren. Subagenten
+liefern Ergebnisse und knappe Prüfnachweise, keine eigenmächtigen Pushes
+oder Cross-Repo-Transfers. Hauptagent prüft, sammelt Korrekturen und
+schliesst die Arbeitseinheit ab. Fehlende Unterstützung für Modellprofil
+oder Subagent wird offen benannt; keine stillschweigende teurere
+Alternative.
+
+** WF12: Migration und Verbesserungsrückfluss
+:PROPERTIES:
+:CUSTOM_ID: wf12-migration-und-verbesserungsrückfluss
+:END:
+Bei Datei- und Formatmigration Bestand und Verlustgefahr prüfen,
+Vorschau erstellen, nach Freigabe konvertieren und Verweise validieren.
+Originale erst nach gesondert gedeckter Freigabe entfernen. Bei
+Prozessverbesserungen Erkenntnis abstrakt im Projekt-Backlog festhalten,
+zuständiges Setup vorschlagen und eine sanitierte Übernahme vorbereiten.
+Beide Abläufe sind bewusst, keine laufende ungefragte Massenpflege.
+
+* 9. Technische Bestandsprüfung
+:PROPERTIES:
+:CUSTOM_ID: technische-bestandsprüfung
+:END:
+Die folgenden Befunde stammen aus gelesener Repository-Dokumentation,
+*nicht aus einem ausgeführten Integrationstest*. Die echte lokale
+memento-Struktur, Gerätekonfiguration und Laufzeit wurden in dieser
+Spezifikation nicht untersucht.
+
+** 9.1 coding-agent-setup
+:PROPERTIES:
+:CUSTOM_ID: coding-agent-setup
+:END:
+Der aktuell gelesene Workflow legt Planung/Review in die Hauptsession;
+Claude-Umsetzung ist Sonnet Medium bzw. eskaliert High, Codex-Umsetzung
+Sol Medium bzw. High. Eskalation sowie xhigh/max benötigen Freigabe.
+Luna ist dort nicht als festes Profil eingetragen. Die
+Nutzerentscheidung erweitert die *Konfigurierbarkeit der Umsetzung*,
+statt einen angeblich bereits bestehenden Luna-Standard zu behaupten.
+[S1]
+
+Der Workflow ist stark ticket- und GitHub-orientiert, und das
+Sync-Manifest verwaltet gemeinsame Skill- und Agentenpfade. Reine
+Wiki-Arbeit darf deshalb nicht blind denselben Ticket/PR-Zwang erben.
+Rollenprinzip und Sprachklarheit sind wiederverwendbar; konkrete
+Integrationsregeln müssen getrennt werden. [S1, S2]
+
+** 9.2 org-files-db / orgfdb
+:PROPERTIES:
+:CUSTOM_ID: org-files-db-orgfdb
+:END:
+=orgfdb= ist das CLI des Repositories =hubisan/org-files-db=.
+Dokumentiert sind strukturierte Queries, JSON, Rebuild, inkrementeller
+Watch, Status/Generationen, Linkdaten und optionale FTS5-Suche. Die
+Dokumentation beschreibt einen stabilen JSON-Vertrag. Das passt zur
+gewünschten lokalen Auswahl weniger relevanter Treffer. [S3]
+
+Wichtige Integrationsdetails:
+
+| Befund                                                                             | Konsequenz für diese Spezifikation                                                                                             |
+|------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------|
+| Org-TODO-Defaults sind konfigurierbar; Dateideklarationen haben Vorrang            | Die sieben memento-Zustände und vorhandene Deklarationen bewahren                                                              |
+| Body-Volltext ist standardmässig nicht aktiviert                                   | Fehlender Body-Treffer ist kein Beweis, dass Inhalt nicht existiert; gezielt Quelle lesen oder Suchmodus bewusst konfigurieren |
+| Read-only-Abfragen erzeugen keine fehlende DB und migrieren kein veraltetes Schema | Indexzustand vor Nutzung prüfen; Fallback oder autorisierten Rebuild ausführen                                                 |
+| Rebuild kann einzelne Dateien überspringen und trotzdem Exitcode 0 liefern         | Auch Diagnostik auswerten; unvollständigen Index nicht als vollständige Aufgabenliste ausgeben                                 |
+| Watch behält bei bestimmten Dateifehlern letzte gute Zeilen                        | Betroffene Datei vor Schreibzugriff live lesen; Warnungen nicht unterdrücken                                                   |
+| Indexgenerationen und Änderungsdaten sind technische Cache-Zustände                | Nicht als KI-Aktivitätsjournal verwenden                                                                                       |
+| Bestimmte Linkformen, unter anderem attachment-Auflösung, sind begrenzt            | Nicht unterstützte Links als ungeprüft ausweisen statt falsch als gültig/ungültig bewerten                                     |
+
+Diese Befunde sind in README, Konfigurations- und CLI-Referenz
+dokumentiert. Android/Termux-Unterstützung wurde nicht nachgewiesen;
+«Unix-artig» in einer README ersetzt keinen Gerätetest. Die
+dokumentierte CLI wird als Lese- und Indexschnittstelle genutzt; ein
+sicherer Writer für Org-Quelltexte wird nicht als bereits vorhandene
+orgfdb-Funktion vorausgesetzt. [S3--S5]
+
+** 9.3 Org-Links, Git und Dateigrösse
+:PROPERTIES:
+:CUSTOM_ID: org-links-git-und-dateigrösse
+:END:
+Org unterstützt CUSTOM_ID-Verweise innerhalb einer Datei sowie
+dateibezogene Custom-Anker. Die Anker müssen im Dokument eindeutig
+bleiben. Eine Datei-Verschiebung ist weiterhin eine zu prüfende
+Linkänderung. GitHub- und Mobile-Renderer werden konkret getestet;
+daraus folgt kein Auftrag für einen neuen ID-Index. [S6]
+
+Git liefert Arbeitsbaum- und Commit-Diffs; die Anzeige ist nicht an
+Emacs gebunden. Ein uncommitteter Diff ist veränderlich, während ein
+Commitbezug einen bestimmten Stand bezeichnet. Das Journal speichert
+deshalb keine konkurrierende Diff-Historie. [S8]
+
+GitHub nennt 1 GB als ideale Repository-Grösse, nicht als pauschales
+hartes Maximum; reguläre Dateien über 100 MiB werden blockiert. Die
+separate Strukturempfehlung bezieht sich unter anderem auf die
+komprimierte .git-Grösse. Daraus folgt hier nur: Arbeitsbaum, Historie,
+Einzeldateien und abgeleitete Daten vor einer Speicherentscheidung
+getrennt messen. Aktuelle Host-Grenzen sind Implementierungsdaten, keine
+unveränderlichen Architekturkonstanten. [S7]
+
+* 10. Aufgelöste Spannungen
+:PROPERTIES:
+:CUSTOM_ID: aufgelöste-spannungen
+:END:
+| Frühere Spannung                                         | Verbindliche Konsolidierung                                                                                                    |
+|----------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------|
+| Projektindex ausserhalb oder innerhalb memento?          | Q120 entscheidet memento; keine separate Pflicht-Verwaltungsstruktur                                                           |
+| Immer nachfragen oder automatisch speichern?             | Explizite und passend begrenzte Freigaben gelten; sonst vorschlagen. Risiko- und Schutzgrenzen bleiben bestehen                |
+| Ein Aufgaben-System oder mehrere?                        | Pro Bestand eine Quelle. Persönliches GTD in memento, technische Projektaufgaben extern referenziert                           |
+| Wiki behalten oder Projekt auslagern?                    | Wiki bleibt; übergebener Projektumfang wird im neuen Repository weitergeführt und datiert verlinkt                             |
+| Org oder Markdown?                                       | Wählbarer Standard, gemischter Bestand erlaubt; Migration separate bewusste Aktion                                             |
+| Kleiner Kern oder umfassendes GTD?                       | V1-A Kern, V1-B optionales memento-Profil; kein GTD-Zwang in fremden Projekten                                                 |
+| Browser gleichwertig oder fehlender Dateizugriff?        | Gleiche fachliche Regeln, unterschiedliche Fähigkeiten; ehrlicher Capture- und Paket-Fallback                                  |
+| Zentrales Journal oder getrennte Zugriffe?               | Zentrale autorisierte Übersicht, keine Pflicht zur Offenlegung vertraulicher Inhalte; fehlenden Journaleintrag sichtbar lassen |
+| 30 Tage oder Historie erhalten?                          | Aktuelle Ansicht 30 Tage, ältere Aktivitäten archivieren; keine automatische Datenvernichtung                                  |
+| Billige Subagenten oder freie Modellwahl?                | Nutzer wählt Hauptsession und separates Umsetzungsprofil; Delegation nur mit Nutzen und passenden Rechten                      |
+| Parallelität verpflichtend, Test erst später?            | Schnittstelle jetzt festlegen, reale Kombination erst nach eigenem Test freigeben; Kernpilot nicht blockieren                  |
+| Einfacher Git-Diff oder exakter Einzelvorgangs-Snapshot? | Git-Arbeitseinheit genügt; keine eigene Snapshot-Engine                                                                        |
+| Erinnerung oder kein Gedächtnis?                         | Persistente offene Liste lesen; ohne Liste keine verlässliche Erinnerung und kein behaupteter Hintergrundlauf                  |
+| Eigener Aufgabenmanager oder vorhandenes Org?            | Vorhandene TODOs/Checklisten und orgfdb zuerst; neue Review- und GUI-App nur separates optionales Vorhaben                     |
+
+* 11. Sicherheits- und Fehlerszenarien
+:PROPERTIES:
+:CUSTOM_ID: sicherheits--und-fehlerszenarien
+:END:
+Die folgenden Regeln konkretisieren R20--R22 und R32; sie sind keine
+zusätzliche Infrastruktur:
+
+*Untrusted Content:* Eine Note oder importierte Quelle kann Sätze
+enthalten, die wie Agentenanweisungen aussehen. Sie darf dadurch weder
+Schutzregeln überschreiben noch Programme, Org-Babel-Blöcke oder Links
+ausführen. Capture-Inhalt wird nicht als Shell-Code verwendet.
+
+*Zugriff und Pfade:* Zulässige Dateibereiche, Symlinks und Zielidentität
+vor dem Schreiben prüfen. Ein logischer Themenfilter ist keine
+technische Sandbox. Vertrauliche lokale Daten können durch einen
+Cloud-Agenten extern verarbeitet werden; «lokal im Repo» bedeutet nicht
+automatisch «lokal vom Modell verarbeitet».
+
+*Mehrere Schreiber:* Vorhandene fremde Arbeitsbaum- und Indexänderungen
+nicht ungefragt committen. Bei veränderter Basis erneut lesen und
+gezielt zusammenführen oder stoppen. Externe Sync-Skripte und Agenten
+dürfen nicht gleichzeitig unkoordiniert denselben Bestand umschreiben.
+
+*Teilabschluss:* Zielschreiben, Journaleintrag, Commit, Push und
+Indexaktualisierung sind getrennte Schritte. Ein Fehler in einem
+Folgeschritt löscht keinen bereits korrekten Inhalt; er wird als offener
+Schritt gemeldet. Repositories besitzen keine gemeinsame atomare
+Transaktion.
+
+*Archivierung und Git-Historie:* Verschieben ins Archiv reduziert die
+aktuelle Ansicht, nicht zwangsläufig die Git-Gesamtgrösse. Das Löschen
+einer Datei entfernt keine früheren Git-Versionen. Eine
+Historienbereinigung ist ein gesonderter riskanter Auftrag, keine
+beiläufige Speicheroptimierung.
+
+*Wiederherstellung:* Git hilft bei versionierten Änderungen. Nicht
+eingecheckte Daten, externe Originale, LFS-Objekte und Host-Metadaten
+müssen in der Sicherungsbetrachtung separat vorkommen. Kein Backup wird
+allein durch dieses Dokument eingerichtet.
+
+* 12. Offene technische Punkte
+:PROPERTIES:
+:CUSTOM_ID: offene-technische-punkte
+:END:
+Diese Punkte blockieren nicht die fachliche Konsolidierung. Sie MÜSSEN
+vor Freigabe der betreffenden Funktion entschieden und getestet werden.
+Es sind keine neuen allgemeinen Grill-Runden erforderlich, soweit die
+Antwort durch Bestandsaufnahme oder einen kleinen Test gefunden werden
+kann.
+
+| ID   | Technische Entscheidung/Prüfung                                                | Grenze und Nachweis                                                                                                             |
+|------+--------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------|
+| TP01 | Konfigurationsschema, Schema-Version, Namen und Vererbungsauflösung            | Eine Projektkonfiguration; keine still permissiven Defaults; vor Adoption festlegen                                             |
+| TP02 | Besitzmanifest, Seed- und Managed-Regeln, Abbruch- und Wiederaufnahmeverhalten | Konflikt- und Idempotenztests, kein fremdes Überschreiben                                                                       |
+| TP03 | Agenten-Ladeverhalten, Skill-Discovery, gemeinsame Lockfiles/Lizenzen          | Gegen konkrete installierte Versionen prüfen; beide Setup-Reihenfolgen testen                                                   |
+| TP04 | Bestehende memento-Notes, Indizes, Journale und Capture-Ziele                  | Gezielte Bestandsaufnahme, keine neue Ordnerordnung voraussetzen                                                                |
+| TP05 | orgfdb-Adapter, aktuelle JSON-Felder, Frischeprüfung und Warnungen             | Lokale Laufzeitprüfung; Rebuild/Watch, Fehler- und Stale-Fälle, Termux gesondert                                                |
+| TP06 | Vorhandene Snooze- und Wiedervorlage- und Agenda-Konvention                    | Sieben Keywords erhalten; Zurückstellung, Fälligkeit und WAIT nicht verwechseln                                                 |
+| TP07 | Persistenzform für Projektindex, Captures und Journal                          | Einfache Org- und Dateistruktur in memento, stabile Wiedererkennung, keine zweite zentrale DB                                   |
+| TP08 | Leichtgewichtiger Writer, Konflikt- und Lock- und Retry-Verhalten              | Struktur erhalten; kein Capture-Schreib-API von orgfdb voraussetzen                                                             |
+| TP09 | Gerätepfade und portable Repo- und CUSTOM_ID-Verweise                          | Laptop, CLI, Browser und gewählter mobiler Viewer prüfen; keine globalen ID-Indizes verlangen                                   |
+| TP10 | Journal-Archivierung, Commitzuordnung und Nachführen bei Ausfall               | 30 Tage, keine Schleifen, ehrlicher Teilabschluss, Schutzbereich erhalten                                                       |
+| TP11 | Tatsächliche Modell- und Effort-IDs und Subagenten-Fähigkeiten                 | Luna High/Sol Medium nur als konfigurierbare Profile; Verfügbarkeit, Preis und Laufzeitoptionen aktuell prüfen                  |
+| TP12 | Konverter und Verlustprüfungen für Org/Markdown/PDF/DOCX/Bilder                | Reale Beispiele, Quellenbezug, keine automatische Originallöschung                                                              |
+| TP13 | Aufgaben- und Host-Adapter, optionaler Kalender und Backup/Synchronisation     | Getrennte Vorhaben/Erweiterungen; kein neuer Scheduler oder Tracker im Kern                                                     |
+| TP14 | Messbare Kontext- und Laufzeitbudgets                                          | Mit realem memento testen; gelesene Dateien/Bytes und verfügbare Tokenmessung dokumentieren, keine unbelegten Kostenversprechen |
+
+* 13. Akzeptanz und Umsetzung
+:PROPERTIES:
+:CUSTOM_ID: akzeptanz-und-umsetzung
+:END:
+Das [[file:akzeptanz-und-umsetzung.org][Akzeptanzdokument]] definiert die
+aus R01--R40 abgeleiteten Tests. Es trennt Dokumentprüfung, spätere
+Software- und Workflow-Tests und optionale Funktionsabnahme. Keine dort
+beschriebene Produktprüfung gilt allein durch diese Spezifikation als
+ausgeführt.
+
+Die Reihenfolge lautet: technische Verträge und sichere Adoption;
+durchgängiger Menüplaner-Pilot; Updates und Handoffs;
+memento-Bestandsaufnahme und orgfdb; Capture/Journal/GTD; bei realem
+Bedarf Coding-Koexistenz und weitere Integrationen. Hohe Risiken zuerst
+prüfen, keine grossen Frameworks vor dem ersten nutzbaren Ablauf bauen.
+
+* 14. Ausserhalb des aktuellen Umsetzungsauftrags
+:PROPERTIES:
+:CUSTOM_ID: ausserhalb-des-aktuellen-umsetzungsauftrags
+:END:
+Diese Lieferung enthält ausschliesslich Spezifikation und Prüfplanung.
+Sie erstellt keine Repositories, Issues, PRs, Skills, produktiven
+Skripte, Kalendertermine oder Automationen. Auch die bestehenden
+Repositories werden nicht verändert.
+
+Ausserhalb des ersten Produktkerns bleiben: eigene Desktop- und Mobile-
+und Web-App, neuer Suchserver, eigenes umfassendes Aufgaben- und
+Review-System, bidirektionaler Issue-Import und -Export, vollständiger
+Kalenderersatz, automatische Veröffentlichung aller Chats,
+unbeaufsichtigte Datenbereinigung und garantierte Org-Konvertierung
+aller Spezialfunktionen. Diese Ideen werden als optionale Folgearbeit
+erhalten, nicht vergessen und nicht als Abhängigkeit des Kerns
+aufgebaut.
+
+* 15. Quellen und Prüfstand
+:PROPERTIES:
+:CUSTOM_ID: quellen-und-prüfstand
+:END:
+*U1:* Nutzerentscheidungen Q001--Q121 und Ergänzungen in diesem
+Gespräch; nach Abschluss bestätigte Gesamtarchitektur. Die
+Entscheidungen sind im Begleitregister konsolidiert, nicht als erfundene
+Original-Fragebögen wiedergegeben.
+
+*U2:* Frühere Datei =agent-project-setup-spezifikation-v1.md=, Stand
+29.10.2026, nach Q001--Q092. Nur historische Ausgangsbasis; spätere
+Nutzerentscheidungen sind massgebend.
+
+Die folgenden technischen Quellen wurden am 29.10.2026 gelesen.
+Repo-Dateien wurden nur gelesen; lokale Programme wurden nicht
+installiert oder gegen Nutzerdaten ausgeführt.
+
+| ID | Quelle                                                                                                                                                                                                                                                    | Nachweis/Geltung                                                                                               |
+|----+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------|
+| S1 | [[https://github.com/hubisan/coding-agent-setup/blob/main/docs/agents/WORKFLOW.md][Coding-Workflow]]                                                                                                                                                      | Blob =24077f47cbfd08f38a4a798ec3b2fe82f6aff0f1=; dokumentierte Rollen, Modellprofile und Coding-Regeln         |
+| S2 | [[https://github.com/hubisan/coding-agent-setup/blob/main/sync-manifest.txt][Coding-Sync-Manifest]]                                                                                                                                                       | Blob =8472729b9f58481000442cf1ff65154074b397c1=; aktueller Besitz- und Sync-Umfang                             |
+| S3 | [[https://github.com/hubisan/org-files-db/blob/main/README.org][org-files-db README]]                                                                                                                                                                     | Blob =09c1a4e1d32f0cc43ec77f79427c86d9879f9afd=; dokumentierter CLI-Umfang, JSON, Grenzen                      |
+| S4 | [[https://github.com/hubisan/org-files-db/blob/main/docs/config.org][orgfdb-Konfiguration]]                                                                                                                                                               | Blob =ff41ef92cce6e6366828076584b7512a3d878a14=; TODO, FTS, Zeitzone, Index                                    |
+| S5 | [[https://github.com/hubisan/org-files-db/blob/main/docs/cli.org][orgfdb CLI-Referenz]]                                                                                                                                                                   | Blob =88ed102c8b57df2105fde9e015047f529d7ff2f8=; gelesene Zeilen 1--240, Rebuild- und Watch-Fehlerverhalten    |
+| S6 | [[https://orgmode.org/manual/Internal-Links.html][Org: Internal Links]], [[https://orgmode.org/manual/External-Links.html][External Links]], [[https://orgmode.org/manual/Publishing-links.html][Publishing links]]                                       | CUSTOM_ID-Syntax, Eindeutigkeit, Dateikontext und HTML-Export; keine pauschale Drittanbieter-Renderer-Garantie |
+| S7 | [[https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github][GitHub: Large files]], [[https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits][Repository limits]] | Aktuelle Empfehlung vs. harte Dateibeschränkung; nicht als feste Setup-Konstante verwenden                     |
+| S8 | [[https://git-scm.com/docs/git-diff][Git diff]], [[https://git-scm.com/docs/git-show][Git show]]                                                                                                                                                          | Arbeitsbaum- und Index- und Commitvergleiche und Commitanzeige                                                 |
+| S9 | [[https://gettingthingsdone.com/2024/11/the-natural-planning-model/][GTD: Natural Planning Model]]                                                                                                                                                        | Fünf Planungsbestandteile; hier adaptiver Methodenrahmen, kein vollständiger GTD-Produktnachbau                |
+
+Die Links auf =main= können sich später ändern; die Blob-IDs
+kennzeichnen den gelesenen Dateistand. Runtime-Eignung, Preisprofile und
+Integration bleiben die explizit bezeichneten technischen Prüfpunkte.
