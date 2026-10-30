@@ -4,6 +4,14 @@
 
 See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). The existing implementation issues #12–#20 predate this revised taxonomy and **will need review before their titles/scopes are changed**. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
 
+## Org-mode document granularity
+
+Prefer **cohesive, topic-based Org files** rather than either a monolithic repository-wide file or a Zettelkasten-style collection of atomic notes. **Medium-sized and fairly large Org files are welcome.** Use headings and subheadings to organise related content within the same file.
+
+Split a file **only when there is a concrete benefit**: clearly independent domains, separate lifecycles or maintainers, distinctly different retrieval/work contexts, or an actual navigation/maintenance problem. File size alone is not a reason to split. Avoid one-file-per-thought, one-file-per-term and arbitrary line-count/heading-count thresholds.
+
+Retain existing project conventions and meaningful cross-links. When splitting is warranted, use a small number of well-named, coherent files and keep their relationships discoverable. **Do not automatically reorganise an existing user's notes.** Ask permission before any consequential migration and explain the proposed split.
+
 ## Phase-specific candidates
 
 | Phase | Skill candidate | Responsibility | Expected outcome | Existing issue |
