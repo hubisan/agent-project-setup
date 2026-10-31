@@ -4,6 +4,28 @@
 
 See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). The existing implementation issues #12–#20 predate this revised taxonomy and **will need review before their titles/scopes are changed**. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
 
+## Skill availability and platform routing (user-confirmed 2026-10-31)
+
+**Decision Q1 (user-confirmed):** keep a small global core of broadly useful APS skills; make specialised skills available in the projects where they are needed. This is a **deployment scope**, not necessarily the source location: canonical accepted APS skills remain in `.agents/skills/` and platform-specific installed copies/adapters are derived. Do not deploy the whole candidate catalog: release individual skills only after their quality gates pass.
+
+**Decision Q2 (user-confirmed):** specialised programming skills are needed in normal ChatGPT conversations only on demand. Keep the full engineering workflow optional through `coding-agent-setup`; install selected programming skills into ChatGPT only after actual repeated use justifies it. Conceptual work through specification (framing, domain understanding, research, requirements, options and validation) belongs to generally usable APS skills, including ChatGPT once those skills are approved and installed.
+
+**Operational platform distinction (technical; verify again when implementing adapters):**
+
+| Host | Repository-local discovery | Normal ChatGPT conversation |
+| --- | --- | --- |
+| Codex | Supports repository skills under `.agents/skills/`, subject to current discovery scope and host settings. | Not applicable to native ChatGPT skill selection. |
+| Claude Code | Supports project skills under `.claude/skills/`, with derived copies/adapters from the canonical source. | Not applicable to native ChatGPT skill selection. |
+| ChatGPT | A GitHub connector may let a chat read an accessible repository `SKILL.md` as task context on explicit request, but repository presence alone does **not** register it in ChatGPT's automatic skill selection. | Automatic/native skill selection requires availability through ChatGPT's supported skill installation/distribution mechanism. |
+
+A skill file on GitHub is **source**, not proof that a host has installed, indexed, or selected it. Loaded repository instructions can guide a chat, but execution of bundled scripts depends on available tools/permissions. Avoid claiming automatic cross-host discovery. Keep published skills narrow and their descriptions distinct; test positive triggers, negative triggers, and overlapping-skill cases. Where two skills fit, route by the **immediate task**; use another skill later if the task genuinely crosses workflows. For same-name conflicts, inspect host precedence and avoid distributing divergent versions under an identical name.
+
+**Ambiguous requests:** general agent instructions should flag material ambiguity, not force an interview for every missing detail. Use `aps-clarify` for consequential or goal-changing unknowns; choose and disclose safe reversible defaults otherwise. `aps-frame` deals specifically with initial project purpose and desired outcome. Do not add an overlapping general prompt-clarification skill without evidence from actual tests.
+
+**Existing domain-modeling decision:** conceptual domain modeling is already a progressively deepened method inside `aps-analyze`, not a separate mandatory `aps-model` skill; revisit only if practical usage shows a distinct repeated workflow. Do not copy AIHero skills wholesale. Identify reusable *methods* to express in original, provider-neutral APS guidance; leave implementation-specific engineering practices in the optional coding setup.
+
+**Provenance and revisit:** Q1 and Q2 were confirmed in an APS Clarify conversation on 2026-10-31; platform deployment detail and routing/test rules above are agent-selected implementation defaults. Revisit when platform capabilities change or pilot tests show missed/incorrect activations. No new install or adapter implementation is authorised by these decisions alone.
+
 ## Org-mode document granularity
 
 Prefer **cohesive, topic-based Org files** rather than either a monolithic repository-wide file or a Zettelkasten-style collection of atomic notes. **Medium-sized and fairly large Org files are welcome.** Use headings and subheadings to organise related content within the same file.
