@@ -67,6 +67,17 @@ Natural Planning is an on-demand technique across phases: **Purpose -> Outcome -
 
 Execution is a **real project phase after planning**; do not imply that identifying a NEXT action means it was done.
 
+## Temporarily install and update a ChatGPT skill
+
+Keep the authoritative skill source under `.agents/skills/<skill-name>/` in the development branch. For testing in ChatGPT, package **one skill directory per ZIP** (including `SKILL.md`, `agents/openai.yaml` and referenced files). Validate it before uploading; do not commit generated ZIPs into the repository.
+
+1. In ChatGPT's Skills library (when available to the account/workspace), install the single-skill ZIP.
+2. To test a revision, generate a fresh ZIP **from the correct branch**. Use the library's update/replace control if offered; otherwise remove the test installation and install the new ZIP. Start a **fresh chat** to test invocation reliably.
+3. Test both explicit `@Skill` use and a natural request **without naming the skill**. Record which version/commit was tested, the observed behaviour and remaining failures in that skill's implementation issue.
+4. Remove the temporary installation when finished. Source-control updates **do not** update an already installed ChatGPT test copy.
+
+For Codex and Claude Code, prefer repository-local skill directories (and host-specific mirrors or symlinks as needed) in an isolated checkout instead of global installation. Review the platform's supported skill discovery locations before assuming a skill will auto-activate.
+
 ## Skill quality gate: develop one at a time
 
 For every candidate, design and verify:
