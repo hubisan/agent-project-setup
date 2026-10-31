@@ -14,7 +14,7 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 2. **Optional context.** Under the question title, add a brief explanation of the situation, scope or consequence **only when the title alone would leave the user unsure what is being decided**.
 3. **Options.** When offering choices, place the **recommended option first as A**, with a concise explanation of why and its most relevant trade-off. Put genuinely distinct alternatives after it as B and C (as applicable), and offer **D - Other / own solution** with free text. If there is no defensible recommendation yet, disclose that instead of inventing one.
 4. **Optional option descriptions.** Add short explanations below individual choices **only if their titles leave meaning or consequences unclear**.
-5. **Human choice.** A recommended or visually preselected answer is a suggestion, never user confirmation. Support qualified replies such as "B, but..." and preserve general comments.
+5. **Human choice and defaults.** In supported interactive single-choice controls, **preselect recommended A** so users can quickly accept the recommendation or choose another option. Keep the selection editable and require an explicit user submission; a preselection alone is **never consent**. Do not invent a selection in plain text or when there is no justified recommendation. Support qualified replies such as "B, but..." and preserve general comments.
 
 ## After each round
 
