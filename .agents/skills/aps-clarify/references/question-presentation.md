@@ -5,8 +5,9 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 ## Choose the presentation
 
 - Use a simple conversational question when choices are not helpful. Use a single question when its answer blocks meaningful follow-ups; otherwise group related or independent questions when the host makes that easier.
+- **Layout:** present each question as a vertical group. List answer choices vertically, with each choice's explanation indented **immediately below its own title**. Avoid side-by-side columns for choice labels and explanations: long labels become narrow and hard to read.
 - Respect natural-language requests such as "one at a time", "briefly" or "several together". Use interactive controls when supported, and preserve the same content and choices in plain Markdown or text.
-- Show a multi-question round's general-comments field and one submission action where supported. Keep navigation and progress indicators meaningful; never invent a fixed total.
+- Show a multi-question round's general-comments field. When supported, include **two actions**: **Copy answers** (copy formatted selections and free-text remarks to the clipboard without submitting) and **Submit answers** (send them). Copy lets users paste the answers into the normal chat composer and attach images/files before sending. Do not promise to place text directly in the composer unless the host supports that action. Keep navigation and progress indicators meaningful; never invent a fixed total.
 
 ## Write each question
 
