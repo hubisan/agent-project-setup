@@ -67,6 +67,17 @@ Natural Planning is an on-demand technique across phases: **Purpose -> Outcome -
 
 Execution is a **real project phase after planning**; do not imply that identifying a NEXT action means it was done.
 
+## Temporarily install and update a ChatGPT skill
+
+Keep the authoritative skill source under `.agents/skills/<skill-name>/` in the development branch. For testing in ChatGPT, package **one skill directory per ZIP** (including `SKILL.md`, `agents/openai.yaml` and referenced files). Validate it before uploading; do not commit generated ZIPs into the repository.
+
+1. In ChatGPT's Skills library (when available to the account/workspace), install the single-skill ZIP.
+2. To test a revision, generate a fresh ZIP **from the correct branch**. Use the library's update/replace control if offered; otherwise remove the test installation and install the new ZIP. Start a **fresh chat** to test invocation reliably.
+3. Test both explicit `@Skill` use and a natural request **without naming the skill**. Record which version/commit was tested, the observed behaviour and remaining failures in that skill's implementation issue.
+4. Remove the temporary installation when finished. Source-control updates **do not** update an already installed ChatGPT test copy.
+
+For Codex and Claude Code, prefer repository-local skill directories (and host-specific mirrors or symlinks as needed) in an isolated checkout instead of global installation. Review the platform's supported skill discovery locations before assuming a skill will auto-activate.
+
 ## Skill quality gate: develop one at a time
 
 For every candidate, design and verify:
@@ -83,18 +94,9 @@ A short `SKILL.md` is **not** acceptance evidence. No project skill is currently
 
 ## Clarification and questioning presentation contract
 
-**Historical pilot:** [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. These are retrospective routing hypotheses, not verified claims about missing original question wording.
+**Historical context:** The [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. It is a routing hypothesis, not a measured reduction in actual interview questions.
 
-
-
-`aps-clarify` should preserve the proven interview format:
-
-- Stable question number and concise heading, with enough context to choose.
-- Options A/B/C as needed and **D – Other solution** with free text.
-- A visibly marked **recommended answer with its reasoning and key trade-off**, distinguishing recommendation from user confirmation.
-- One general-comments field and one submission action at the end of a round.
-- In an interactive host, preselection is a suggestion, never assumed consent; in CLI/text contexts, show an equivalent legible questionnaire.
-- Preserve nuanced replies (e.g. “B, with this change”) and ask only the current independent question frontier.
+**Single source for question layout:** Use the [question presentation reference](../.agents/skills/aps-clarify/references/question-presentation.md) in the candidate `aps-clarify` skill. It defines question numbering, optional clarification text, recommended-first answers and free-text comments. Future APS questioning skills should point to this common guidance rather than copy it. Interactive forms are optional and must have a plain-text equivalent.
 
 ### Decision autonomy and question discipline
 
