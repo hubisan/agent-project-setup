@@ -6,7 +6,7 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 
 - Do not repeat a long introduction both before and inside a question. Keep setup proportional to the decision, and ensure options are genuinely distinct rather than overlapping directions.
 - Use a simple conversational question when choices are not helpful. Use a single question when its answer blocks meaningful follow-ups; otherwise group related or independent questions when the host makes that easier.
-- **Interactive layout experiment:** put the **entire option text** (short title plus any essential explanation) inside **one radio label/text block**. Do not provide a separate description field, side column, table cell or adjacent sibling for that explanation; hosts may lay out those separately even when instructed not to. Prefer a short one-line radio label with no explanation when the meaning is clear. If longer text still creates a two-column or badly wrapped form, put brief explanations **above the radio group** and use **short titles only inside radio controls**. Keep the working **Copy answers** and **Submit answers** controls unchanged. Fall back to plain Markdown choices only if neither interactive approach renders acceptably.
+- **Inline radio content (required):** within each single radio option, place the **bold title** followed immediately by an optional regular-weight description on the **same flowing line**. Example: `**A – Meal planning (recommended)** – Select recipes and prepare the shopping list.` The full option should naturally wrap across the available width. Do not author a separate description field, side column, grid, table or sibling layout. Omit descriptions when labels suffice. If the host still creates two columns, use short title-only radios and put essential explanation above the group. Preserve the working **Copy answers** and **Submit answers** controls.
 - Respect natural-language requests such as "one at a time", "briefly" or "several together". Use interactive controls when supported, and preserve the same content and choices in plain Markdown or text.
 - Show a multi-question round's general-comments field. When supported, include **two actions**: **Copy answers** (copy formatted selections and free-text remarks to the clipboard without submitting) and **Submit answers** (send them). Copy lets users paste the answers into the normal chat composer and attach images/files before sending. Do not promise to place text directly in the composer unless the host supports that action. Keep navigation and progress indicators meaningful; never invent a fixed total.
 
@@ -20,12 +20,12 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 
 ## Visual example (structure, not fixed content)
 
-First try **one text payload per radio option** (not a separately authored title + description pair):
+Use **one radio option with inline formatting** for its title and optional description:
 
 ```text
-(●) A — Recommended option. Short explanation if needed.
-( ) B — Alternative option. Short explanation if needed.
-( ) C — Distinct option. Short explanation if needed.
+(●) **A — Recommended option** – Short explanation if needed.
+( ) **B — Alternative option** – Short explanation if needed.
+( ) **C — Distinct option** – Short explanation if needed.
 ( ) D — Other / combination
 ```
 
@@ -39,7 +39,7 @@ Brief context (only if needed): A means ..., B means ...
 ( ) D — Other / combination
 ```
 
-Never create separate description fields for each radio option. The recommendation must be preselected only when defensible, remain editable, and require an explicit user submission. Preserve the compact optional-comment field and the **working copy/submit buttons**. Check narrow and wide views in the real host; use plain text only if even the label-only version is poor.
+Keep title bold and description normal-weight, inline in the same radio option. Never create separate description fields for each radio option. The recommendation must be preselected only when defensible, remain editable, and require an explicit user submission. Preserve the compact optional-comment field and the **working copy/submit buttons**. Check narrow and wide views in the real host; use plain text only if even the label-only version is poor.
 
 ## After each round
 
