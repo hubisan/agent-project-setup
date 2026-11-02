@@ -10,6 +10,7 @@ This public repository develops provider-neutral project guidance. It is not a t
 - **Autonomous decisions:** tell the user about meaningful agent-made choices and persist the choice/rationale in the target project's established decision source; trivial details need no log. If unsaved, report that explicitly. See `docs/skills.md` for the rule.
 - **Decide -> Try -> Adjust:** move forward with safe, reversible defaults, test a small real result, and revise using evidence. Ask the user only for material preferences, trade-offs or required approvals; follow `docs/phases.md` for boundaries.
 - Keep existing Org/Markdown source of truth and decisions. Load relevant sections rather than entire repositories.
+- **Session transfers:** When ending or resuming work across chats, agents, or users, load `.agents/skills/aps-handoff/SKILL.md`. Use a labelled GitHub Issue in the target repository where accessible; the ordinary work ticket remains authoritative. The upstream AI-Hero `handoff` skill's temporary-file output is only a fallback or scratch input, not the finished APS issue handoff.
 - AIHero is conceptual inspiration only; write original general-project instructions and do not copy or install upstream skills.
 - KVP findings are scoped to session, project or setup. Apply generalised changes to this repo only after permission and sensitive-data scrubbing.
 - Keep private and business data outside this public repository. Report proposed, saved, committed and pushed states separately.

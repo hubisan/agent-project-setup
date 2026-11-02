@@ -10,6 +10,7 @@ Provider-independent AI guidance for knowledge bases, planning, research and oth
 
 - [Phase navigation](docs/phases.md) — select a workflow based on current need
 - [Skill catalog and quality gates](docs/skills.md) — phase-specific and cross-cutting **candidates**, reviewed and developed **one by one**
+- [Session handoffs](.agents/skills/aps-handoff/SKILL.md) — portable GitHub-Issue handoff prototype with a Markdown fallback (pending pilot)
 - [Architecture and rollout](docs/architecture.md) — optional memento and coding setup
 - [Approved design baseline v2](docs/spec-v2/README.md) — full specification, 121 decisions and 52 acceptance scenarios in Org and Markdown
 - [Implementation tickets](https://github.com/hubisan/agent-project-setup/issues) — roadmap, blockers and acceptance
