@@ -31,3 +31,13 @@ Latest user screenshot showed that separate option descriptions can still trigge
 User confirmed a real form screenshot with **bold inline option titles, normal-weight descriptions, natural wrapping, preselected recommendation and usable copy/submit controls**. Copy button placement varies but is not important. **Close the form-layout experiment; no further layout iteration needed.** This is a user-observed acceptance of the tested presentation, not a guarantee for all hosts or widths.
 
 User preference reinforced: **try a small real result instead of spending time on speculative discussion**. Preserve Decide -> Try -> Adjust and move on once adequate quality is demonstrated.
+
+## v0.3.4 follow-up acceptance (pending real UI test)
+
+- Present 3–5 genuinely independent user-owned questions in one round. A single question is justified only by a real dependency or if just one matters. Check for serial Q1–Q9 regressions.
+- Vary the answer count (e.g. two ordinary choices plus Other; four ordinary choices plus Other). **Other / own solution** must always be last, using the next available option letter.
+- Selecting Other should display a **dedicated free-text input directly below** where the host supports conditional controls. Otherwise a clearly labelled always-visible custom-answer field is acceptable. Test one-question and multi-question forms.
+- Verify that the custom answer is included in submitted/copied responses, and that general remarks remain separate.
+- Preserve v0.3.3 bold-inline radio layout and functioning copy/submit actions.
+
+**Status:** changes authored in v0.3.4; interaction and grouping are not yet empirically verified.
