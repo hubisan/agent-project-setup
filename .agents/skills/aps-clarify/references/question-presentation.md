@@ -6,7 +6,7 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 
 - Do not repeat a long introduction both before and inside a question. Keep setup proportional to the decision, and ensure options are genuinely distinct rather than overlapping directions.
 - Use a simple conversational question when choices are not helpful. Use a single question when its answer blocks meaningful follow-ups; otherwise group related or independent questions when the host makes that easier.
-- **Layout (required):** render each answer as a single *vertical* block: radio button with option title, then its short explanation **directly below that title** inside the same option. Never use a label/description two-column layout, aligned table cells or side-by-side boxes; these squeeze titles and cause awkward line breaks. Keep explanations short and omit obvious ones. If the interactive form cannot reliably render this layout at narrow and wide widths, use clean Markdown/plain text instead of an awkward form.
+- **Interactive layout experiment:** put the **entire option text** (short title plus any essential explanation) inside **one radio label/text block**. Do not provide a separate description field, side column, table cell or adjacent sibling for that explanation; hosts may lay out those separately even when instructed not to. Prefer a short one-line radio label with no explanation when the meaning is clear. If longer text still creates a two-column or badly wrapped form, put brief explanations **above the radio group** and use **short titles only inside radio controls**. Keep the working **Copy answers** and **Submit answers** controls unchanged. Fall back to plain Markdown choices only if neither interactive approach renders acceptably.
 - Respect natural-language requests such as "one at a time", "briefly" or "several together". Use interactive controls when supported, and preserve the same content and choices in plain Markdown or text.
 - Show a multi-question round's general-comments field. When supported, include **two actions**: **Copy answers** (copy formatted selections and free-text remarks to the clipboard without submitting) and **Submit answers** (send them). Copy lets users paste the answers into the normal chat composer and attach images/files before sending. Do not promise to place text directly in the composer unless the host supports that action. Keep navigation and progress indicators meaningful; never invent a fixed total.
 
@@ -20,19 +20,26 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 
 ## Visual example (structure, not fixed content)
 
-For an interactive single-choice question, use this semantic order for **each** option:
+First try **one text payload per radio option** (not a separately authored title + description pair):
 
 ```text
-(●) A — Recommended option
-    One brief explanation directly underneath.
-( ) B — Alternative option
-    One brief explanation directly underneath.
-( ) C — Another genuinely distinct option
-    One brief explanation directly underneath.
+(●) A — Recommended option. Short explanation if needed.
+( ) B — Alternative option. Short explanation if needed.
+( ) C — Distinct option. Short explanation if needed.
 ( ) D — Other / combination
 ```
 
-Radio title and explanation must be in the *same selectable block*; do not make a separate label column and description column. The recommendation must be preselected **only if defensible** and remain editable. Provide a compact comment field and adjacent copy/submit actions when interactive controls genuinely help. Check readability at both narrow and wide viewport widths; if it wraps awkwardly, fall back to plain text.
+**If that still causes a two-column layout**, keep interactivity and put any necessary clarifications *before* the options:
+
+```text
+Brief context (only if needed): A means ..., B means ...
+(●) A — Recommended option
+( ) B — Alternative option
+( ) C — Distinct option
+( ) D — Other / combination
+```
+
+Never create separate description fields for each radio option. The recommendation must be preselected only when defensible, remain editable, and require an explicit user submission. Preserve the compact optional-comment field and the **working copy/submit buttons**. Check narrow and wide views in the real host; use plain text only if even the label-only version is poor.
 
 ## After each round
 
