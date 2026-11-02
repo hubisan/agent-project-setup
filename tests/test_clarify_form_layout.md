@@ -13,3 +13,7 @@ Observed on 2026-11-02 in test case 1: automatic skill activation succeeded, but
 7. Compare with baseline no-skill behaviour to distinguish model/UI limitations from skill instruction quality.
 
 **Status:** regression test case recorded; not passed until behaviour is observed in a new chat and verified across widths. Static repository CI cannot validate the UI rendered by ChatGPT.
+
+## User pilot feedback (2026-11-02)
+
+The user reports that **test case 1 progressed quickly to a prototype**, with substantially less time spent on repeated clarification than their previous interview-heavy workflow. This is a positive **qualitative observation**, not a controlled speed comparison or proof of passing the form-layout retest. The user also verified that attaching an updated skill ZIP in ChatGPT displays an inline skill card with a **Save changes** action for an already installed skill; applying the update still requires the user's click.
