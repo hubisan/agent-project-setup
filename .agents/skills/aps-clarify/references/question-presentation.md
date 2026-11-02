@@ -14,9 +14,9 @@ Shared presentation rules for APS questioning workflows, including a future `aps
 
 1. **Number and title.** Use stable identifiers `Q1`, `Q2`, `Q3`, etc. Start at Q1 for a new clarification topic; continue sequentially across rounds or when resuming the same topic. Do not renumber existing questions.
 2. **Optional context.** Under the question title, add a brief explanation of the situation, scope or consequence **only when the title alone would leave the user unsure what is being decided**.
-3. **Options.** When offering choices, place the **recommended option first as A**, with a concise explanation of why and its most relevant trade-off. Put genuinely distinct alternatives after it as B and C (as applicable), and offer **D - Other / own solution** with free text. If there is no defensible recommendation yet, disclose that instead of inventing one.
-4. **Optional option descriptions.** Add short explanations below individual choices **only if their titles leave meaning or consequences unclear**.
-5. **Human choice and defaults.** In supported interactive single-choice controls, **preselect recommended A** so users can quickly accept the recommendation or choose another option. Keep the selection editable and require an explicit user submission; a preselection alone is **never consent**. Do not invent a selection in plain text or when there is no justified recommendation. Support qualified replies such as "B, but..." and preserve general comments.
+3. **Options.** When offering choices, place the **recommended option first as A**, with a concise explanation of why and its most relevant trade-off. Put genuinely distinct alternatives after it as B and C (as applicable), and offer **Other / own solution** as the final option, labelled with the next available letter (C, D, E, etc.), with free text. Do not pad the options to a fixed count. If there is no defensible recommendation yet, disclose that instead of inventing one.
+4. **Optional option descriptions.** If needed, include short normal-weight explanations inline after the bold title inside the same radio option; never place them in a separate description area.
+5. **Human choice and defaults.** In supported interactive single-choice controls, **preselect recommended A** so users can quickly accept the recommendation or choose another option. Keep the selection editable and require an explicit user submission; a preselection alone is **never consent**. For the final **Other / own solution** option, reveal a dedicated free-text field directly underneath when selected if conditional controls are supported. Otherwise include an always-visible, clearly labelled custom-answer field. Keep it separate from optional general remarks, including in single-question rounds. Do not invent a selection in plain text or when there is no justified recommendation. Support qualified replies such as "B, but..." and preserve general comments.
 
 ## Visual example (structure, not fixed content)
 
@@ -39,7 +39,7 @@ Brief context (only if needed): A means ..., B means ...
 ( ) D — Other / combination
 ```
 
-Keep title bold and description normal-weight, inline in the same radio option. Never create separate description fields for each radio option. The recommendation must be preselected only when defensible, remain editable, and require an explicit user submission. Preserve the compact optional-comment field and the **working copy/submit buttons**. Check narrow and wide views in the real host; use plain text only if even the label-only version is poor.
+Keep title bold and description normal-weight, inline in the same radio option. Never create separate description fields for each radio option. The recommendation must be preselected only when defensible, remain editable, and require an explicit user submission. Preserve the dedicated custom-answer field, the separate compact optional-comment field and the **working copy/submit buttons**. Group 3–5 independent questions per round rather than asking them serially; reserve single-question rounds for real blockers or when only one user decision is necessary. Check narrow and wide views in the real host; use plain text only if even the label-only version is poor.
 
 ## After each round
 
