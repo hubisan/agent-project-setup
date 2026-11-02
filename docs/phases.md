@@ -11,6 +11,10 @@ These six phases **orient** a project; they are not a mandatory waterfall. Work 
 | **5. Execute** | Can we do or try the next meaningful piece of work? | Real work, experiments and usable results | Use the project's existing tools and appropriate task-specific skills; no generic execution skill |
 | **6. Review** | Does the result meet the intended outcome? | Evaluated outcome, gaps and acceptance decision | `aps-validate` |
 
+## What counts as a validated outcome?
+
+APS covers the path from an initial idea to a **real outcome checked against its intended purpose**, not only to a written specification or a list of next actions. The outcome can be a useful knowledge base, an agreed process, a completed research artifact, an operational workflow, or a working software application. For a software project, **implementation, tests and integration can be part of Execute and Validate**; adopt the separately maintained `coding-agent-setup` and its engineering skills when appropriate rather than requiring APS to duplicate specialised programming workflows. Validation concerns the **actual result**; an approved specification is only a milestone unless the intended deliverable itself was a specification. This does not require every APS project to become software.
+
 ## Cross-cutting skills
 
 See the [skill catalog](skills.md) for the scope of `aps-clarify`, `aps-brainstorm`, `aps-research`, `aps-review`, `aps-improve`, `aps-handoff` and `aps-adopt`. They may be useful in **any** phase. All names are design candidates, not installed/approved skills.
