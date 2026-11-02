@@ -23,7 +23,19 @@ Resolve the **current decision frontier**: the choices that matter for the next 
 5. **Present questions consistently.** Follow [question-presentation.md](references/question-presentation.md) for numbering, context, option order and free-text responses. Use conversational questions when simpler; use interactive forms only where supported, with a usable plain-text fallback.
 6. **Process answers and continue.** Preserve qualified choices and update the unresolved decision frontier after each round. Continue with the next relevant questions or useful work. Summarise decisions at meaningful milestones or when a response changes several other choices, not mechanically after every round.
 7. **Record consequential decisions** in the existing authoritative source, if available and permitted. Capture the choice, reason, origin (agent-selected versus user-confirmed) and relevant assumptions or revisit conditions. Retain the project's established language and Org/Markdown conventions. Do not create a new log for trivial details or interpret a reversible default as permission to publish, merge, delete or share data.
-8. **Stop when the current work can progress.** Report what is decided, assumed or genuinely blocked and distinguish proposed, saved, committed and pushed status. If writing is unavailable, provide ready-to-save wording and state explicitly that it is **not saved**. Perform or propose the smallest useful next action within the available permissions.
+8. **Stop when the current work can progress.** Report what is decided, assumed or genuinely blocked and distinguish proposed, saved, committed and pushed status. If writing is unavailable or no project source exists, provide the compact chat-only APS Decision Summary below and state explicitly that it is **not saved**. Perform or propose the smallest useful next action within the available permissions.
+
+## Chat-only APS Decision Summary
+
+When no writable authoritative project source exists, give a **short, copyable Markdown decision summary** at a meaningful milestone, at the end of clarification, or when requested — **not after every answer**. Do not require Git, a repository, a file, an issue tracker, or another tool.
+
+Use only applicable sections, in the user's language:
+- **Goal** — the intended outcome.
+- **Decided** — consequential choices; mark *user-confirmed* versus *agent-selected* when it matters, adding a brief reason or revisit condition only when useful.
+- **Open** — unresolved questions that actually matter.
+- **Next step** — the smallest useful continuation.
+
+Omit empty sections; avoid reproducing the conversation or trivial choices. Always report the real storage status, for example **"Only documented in this chat; not saved to a project source."** If a project source exists but writing is unavailable or unapproved, say so rather than claiming it does not exist. Do not turn a decision summary into a session handoff: `aps-handoff` additionally carries execution state, sources and resume details.
 
 ## Completion check
 
