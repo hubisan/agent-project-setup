@@ -17,3 +17,7 @@ Observed on 2026-11-02 in test case 1: automatic skill activation succeeded, but
 ## User pilot feedback (2026-11-02)
 
 The user reports that **test case 1 progressed quickly to a prototype**, with substantially less time spent on repeated clarification than their previous interview-heavy workflow. This is a positive **qualitative observation**, not a controlled speed comparison or proof of passing the form-layout retest. The user also verified that attaching an updated skill ZIP in ChatGPT displays an inline skill card with a **Save changes** action for an already installed skill; applying the update still requires the user's click.
+
+## Targeted experiment after test case 2 (2026-11-02)
+
+Second user screenshot still shows side-by-side title/description columns despite prior stacked-layout guidance. **Copy and Submit buttons work; preserve them.** Experiment with a **single radio-label text payload** (title and short description together, no separate description field). If the host still renders columns or awkward wraps, retain interactive radio controls with short title-only labels and move needed explanation above the radio group. Text-only choices are last resort. Retest in a fresh chat at normal and narrow widths. This is a proposed workaround, **not yet verified behaviour**.
