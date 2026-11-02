@@ -4,6 +4,23 @@
 
 See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). The existing implementation issues #12–#20 predate this revised taxonomy and **will need review before their titles/scopes are changed**. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
 
+## APS icon family (visual design decisions)
+
+Use a consistent **Lucide-style, simple rounded line icon** for APS skill metadata. Keep icons distinct, legible at small sizes and independent of any particular provider UI. The catalogue records the design choices; **do not create or install unfinished candidate skills merely to attach icons**.
+
+| Candidate | Symbol | Decision |
+| --- | --- | --- |
+| `aps-frame` | Target (`target`) | User confirmed |
+| `aps-clarify` | Magnifying glass with question mark (custom `search-question.svg`) | Proposed in draft PR #21 for visual review; not yet user-approved |
+| `aps-analyze` | Inspection/search (`scan-search`) | User confirmed |
+| `aps-design` | Pencil and ruler (`pencil-ruler`) | User confirmed |
+| `aps-plan` | Task list (`list-todo`) | User confirmed |
+| `aps-validate` | Shield/check (`shield-check`) | User confirmed |
+| `aps-handoff` | Send (`send`) | User confirmed |
+| `aps-improve` | Iteration (`refresh-cw`) | User confirmed |
+
+Only `aps-clarify` currently has an icon asset proposed in its development PR; later skills receive their own assets when implemented and tested. Icons do not change skill activation or required user permissions.
+
 ## Org-mode document granularity
 
 Prefer **cohesive, topic-based Org files** rather than either a monolithic repository-wide file or a Zettelkasten-style collection of atomic notes. **Medium-sized and fairly large Org files are welcome.** Use headings and subheadings to organise related content within the same file.
