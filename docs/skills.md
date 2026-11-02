@@ -11,7 +11,7 @@ Use a consistent **Lucide-style, simple rounded line icon** for APS skill metada
 | Candidate | Symbol | Decision |
 | --- | --- | --- |
 | `aps-frame` | Target (`target`) | User confirmed |
-| `aps-clarify` | Magnifying glass with question mark (custom `search-question.svg`) | Proposed in draft PR #21 for visual review; not yet user-approved |
+| `aps-clarify` | Lucide Search Check (`search-check`) | User confirmed |
 | `aps-analyze` | Inspection/search (`scan-search`) | User confirmed |
 | `aps-design` | Pencil and ruler (`pencil-ruler`) | User confirmed |
 | `aps-plan` | Task list (`list-todo`) | User confirmed |
@@ -19,7 +19,7 @@ Use a consistent **Lucide-style, simple rounded line icon** for APS skill metada
 | `aps-handoff` | Send (`send`) | User confirmed |
 | `aps-improve` | Iteration (`refresh-cw`) | User confirmed |
 
-Only `aps-clarify` currently has an icon asset proposed in its development PR; later skills receive their own assets when implemented and tested. Icons do not change skill activation or required user permissions.
+Only `aps-clarify` currently has an icon asset included in its development PR; later skills receive their own assets when implemented and tested. Icons do not change skill activation or required user permissions.
 
 ## Org-mode document granularity
 
