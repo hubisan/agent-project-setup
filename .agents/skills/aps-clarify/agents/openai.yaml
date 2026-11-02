@@ -1,5 +1,5 @@
 interface:
   display_name: "aps-clarify"
-  short_description: "Resolve decisions with minimal high-value questions"
+  short_description: "v0.3.2 · Resolve decisions with minimal high-value questions"
   icon_small: "./assets/search-check.svg"
   icon_large: "./assets/search-check.svg"
