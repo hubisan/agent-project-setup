@@ -21,3 +21,7 @@ The user reports that **test case 1 progressed quickly to a prototype**, with su
 ## Targeted experiment after test case 2 (2026-11-02)
 
 Second user screenshot still shows side-by-side title/description columns despite prior stacked-layout guidance. **Copy and Submit buttons work; preserve them.** Experiment with a **single radio-label text payload** (title and short description together, no separate description field). If the host still renders columns or awkward wraps, retain interactive radio controls with short title-only labels and move needed explanation above the radio group. Text-only choices are last resort. Retest in a fresh chat at normal and narrow widths. This is a proposed workaround, **not yet verified behaviour**.
+
+## Inline formatting retest (pilot v0.3.3)
+
+Latest user screenshot showed that separate option descriptions can still trigger two columns. Retest **bold option title + normal-weight description inline inside one radio option**, allowing natural wrapping; do not supply a separate description prop. Verify single-column display at narrow and wide widths and preserve the working copy and submit controls. If this still fails, switch to short title-only radios with brief explanation above the group. **Not yet verified in the host.**
