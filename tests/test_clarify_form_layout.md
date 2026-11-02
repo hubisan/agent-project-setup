@@ -25,3 +25,9 @@ Second user screenshot still shows side-by-side title/description columns despit
 ## Inline formatting retest (pilot v0.3.3)
 
 Latest user screenshot showed that separate option descriptions can still trigger two columns. Retest **bold option title + normal-weight description inline inside one radio option**, allowing natural wrapping; do not supply a separate description prop. Verify single-column display at narrow and wide widths and preserve the working copy and submit controls. If this still fails, switch to short title-only radios with brief explanation above the group. **Not yet verified in the host.**
+
+## Pilot outcome: layout accepted (v0.3.3, 2026-11-02)
+
+User confirmed a real form screenshot with **bold inline option titles, normal-weight descriptions, natural wrapping, preselected recommendation and usable copy/submit controls**. Copy button placement varies but is not important. **Close the form-layout experiment; no further layout iteration needed.** This is a user-observed acceptance of the tested presentation, not a guarantee for all hosts or widths.
+
+User preference reinforced: **try a small real result instead of spending time on speculative discussion**. Preserve Decide -> Try -> Adjust and move on once adequate quality is demonstrated.
