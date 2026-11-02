@@ -26,6 +26,23 @@ A skill file on GitHub is **source**, not proof that a host has installed, index
 
 **Provenance and revisit:** Q1 and Q2 were confirmed in an APS Clarify conversation on 2026-10-31; platform deployment detail and routing/test rules above are agent-selected implementation defaults. Revisit when platform capabilities change or pilot tests show missed/incorrect activations. No new install or adapter implementation is authorised by these decisions alone.
 
+## APS icon family (visual design decisions)
+
+Use a consistent **Lucide-style, simple rounded line icon** for APS skill metadata. Keep icons distinct, legible at small sizes and independent of any particular provider UI. The catalogue records the design choices; **do not create or install unfinished candidate skills merely to attach icons**.
+
+| Candidate | Symbol | Decision |
+| --- | --- | --- |
+| `aps-frame` | Target (`target`) | User confirmed |
+| `aps-clarify` | Lucide Search Check (`search-check`) | User confirmed |
+| `aps-analyze` | Inspection/search (`scan-search`) | User confirmed |
+| `aps-design` | Pencil and ruler (`pencil-ruler`) | User confirmed |
+| `aps-plan` | Task list (`list-todo`) | User confirmed |
+| `aps-validate` | Shield/check (`shield-check`) | User confirmed |
+| `aps-handoff` | Send (`send`) | User confirmed |
+| `aps-improve` | Iteration (`refresh-cw`) | User confirmed |
+
+Only `aps-clarify` currently has an icon asset included in its development PR; later skills receive their own assets when implemented and tested. Icons do not change skill activation or required user permissions.
+
 ## Org-mode document granularity
 
 Prefer **cohesive, topic-based Org files** rather than either a monolithic repository-wide file or a Zettelkasten-style collection of atomic notes. **Medium-sized and fairly large Org files are welcome.** Use headings and subheadings to organise related content within the same file.
@@ -89,6 +106,17 @@ Natural Planning is an on-demand technique across phases: **Purpose -> Outcome -
 
 Execution is a **real project phase after planning**; do not imply that identifying a NEXT action means it was done.
 
+## Temporarily install and update a ChatGPT skill
+
+Keep the authoritative skill source under `.agents/skills/<skill-name>/` in the development branch. For testing in ChatGPT, package **one skill directory per ZIP** (including `SKILL.md`, `agents/openai.yaml` and referenced files). Validate it before uploading; do not commit generated ZIPs into the repository.
+
+1. **Preferred ChatGPT workflow (observed in user pilot, 2026-11-02):** attach the validated single-skill ZIP directly in a chat. When ChatGPT presents an inline skill card, use **Save changes** to replace an already installed skill with the same name (or follow the offered install action). The **user must click** this control; attaching a ZIP alone does not confirm installation. This UI may vary by client or account.
+2. **Fallback:** upload the ZIP through ChatGPT's Skills library when inline installation is unavailable. To test a revision, create a **fresh ZIP from the intended branch** and replace the current test installation.
+3. Start a **fresh chat** after applying the installation/update. Test both explicit skill use and a natural request **without naming the skill**. Record the exact commit/version, observed activation, behaviour, user friction and remaining failures in that skill's implementation issue.
+4. Remove a temporary test installation when no longer needed. Git commits and PR updates **do not** update the installed ChatGPT copy automatically.
+
+For Codex and Claude Code, prefer repository-local skill directories (and host-specific mirrors or symlinks as needed) in an isolated checkout instead of global installation. Review the platform's supported skill discovery locations before assuming a skill will auto-activate.
+
 ## Skill quality gate: develop one at a time
 
 For every candidate, design and verify:
@@ -105,18 +133,9 @@ A short `SKILL.md` is **not** acceptance evidence. No project skill is currently
 
 ## Clarification and questioning presentation contract
 
-**Historical pilot:** [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. These are retrospective routing hypotheses, not verified claims about missing original question wording.
+**Historical context:** The [Q001–Q121 retrospective](clarify-121-question-audit.md) classifies documented decision topics into user decisions, agent defaults, verification, deferral and consolidation. It is a routing hypothesis, not a measured reduction in actual interview questions.
 
-
-
-`aps-clarify` should preserve the proven interview format:
-
-- Stable question number and concise heading, with enough context to choose.
-- Options A/B/C as needed and **D – Other solution** with free text.
-- A visibly marked **recommended answer with its reasoning and key trade-off**, distinguishing recommendation from user confirmation.
-- One general-comments field and one submission action at the end of a round.
-- In an interactive host, preselection is a suggestion, never assumed consent; in CLI/text contexts, show an equivalent legible questionnaire.
-- Preserve nuanced replies (e.g. “B, with this change”) and ask only the current independent question frontier.
+**Single source for question layout:** Use the [question presentation reference](../.agents/skills/aps-clarify/references/question-presentation.md) in the candidate `aps-clarify` skill. It defines question numbering, optional clarification text, recommended-first answers and free-text comments. Future APS questioning skills should point to this common guidance rather than copy it. Interactive forms are optional and must have a plain-text equivalent.
 
 ### Decision autonomy and question discipline
 
@@ -131,6 +150,14 @@ Before asking a question, check whether it is already answered in the project, c
 | Several viable but low-stakes defaults | Choose, briefly explain the reason and record the choice in the project's existing decision documentation if it can affect later work; make it easy to correct. |
 | Goal, user preference, domain policy, materially different trade-offs, or consequential/irreversible action | Ask a **focused** question, show meaningful options and explain the recommendation; obtain necessary permission before the action. |
 | Missing evidence or uncertain assumptions | Research when possible; otherwise disclose the assumption and ask only if it materially affects the outcome. |
+
+### APS Decision Summary when no project storage is available
+
+**Small common APS output convention, not a separate skill or a new storage requirement.** If a clarification reaches a useful milestone or ends, and there is no writable authoritative project source, provide a compact, copyable Markdown summary **in the chat**. Do not require or create Git, GitHub, a repository, an issue, or a local file just to capture it.
+
+Use only nonempty, relevant sections in the user's language: **Goal**, **Decided** (material decisions, distinguishing user-confirmed from agent-selected when important), **Open** (still consequential), and **Next step**. Include brief rationale or revisit conditions only where helpful. Do not emit this after every reply, and do not duplicate the conversation. State the **actual** persistence status explicitly, for example: *Only documented in this chat; not saved to a project source*. If a source exists but writing is unavailable or forbidden, identify that limit; never imply that a chat message was saved externally.
+
+Where a project already has an authoritative decision source, **use its established Org/Markdown, local filesystem, GitHub Issue or other workflow instead**, if authorised. A compact decision summary is **not** a session handoff; `aps-handoff` adds work state, evidence, references and resumption details. The operational use of this shared convention starts with `aps-clarify`; other APS skills may reuse it only where useful.
 
 ### Reporting and retaining autonomous decisions
 
