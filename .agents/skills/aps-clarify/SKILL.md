@@ -5,6 +5,8 @@ description: Clarify open questions, goals, requirements, and decisions. Use whe
 
 # APS Clarify
 
+**Pilot version: 0.3.2** (2026-11-02; single-text radio options with label-only fallback). This is a testing identifier, not a release or approval.
+
 Resolve the **current decision frontier**: the choices that matter for the next useful step. Follow *Decide -> Try -> Adjust* rather than exploring every possible future detail.
 
 ## Workflow
