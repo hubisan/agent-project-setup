@@ -88,10 +88,10 @@ Execution is a **real project phase after planning**; do not imply that identify
 
 Keep the authoritative skill source under `.agents/skills/<skill-name>/` in the development branch. For testing in ChatGPT, package **one skill directory per ZIP** (including `SKILL.md`, `agents/openai.yaml` and referenced files). Validate it before uploading; do not commit generated ZIPs into the repository.
 
-1. In ChatGPT's Skills library (when available to the account/workspace), install the single-skill ZIP.
-2. To test a revision, generate a fresh ZIP **from the correct branch**. Use the library's update/replace control if offered; otherwise remove the test installation and install the new ZIP. Start a **fresh chat** to test invocation reliably.
-3. Test both explicit `@Skill` use and a natural request **without naming the skill**. Record which version/commit was tested, the observed behaviour and remaining failures in that skill's implementation issue.
-4. Remove the temporary installation when finished. Source-control updates **do not** update an already installed ChatGPT test copy.
+1. **Preferred ChatGPT workflow (observed in user pilot, 2026-11-02):** attach the validated single-skill ZIP directly in a chat. When ChatGPT presents an inline skill card, use **Save changes** to replace an already installed skill with the same name (or follow the offered install action). The **user must click** this control; attaching a ZIP alone does not confirm installation. This UI may vary by client or account.
+2. **Fallback:** upload the ZIP through ChatGPT's Skills library when inline installation is unavailable. To test a revision, create a **fresh ZIP from the intended branch** and replace the current test installation.
+3. Start a **fresh chat** after applying the installation/update. Test both explicit skill use and a natural request **without naming the skill**. Record the exact commit/version, observed activation, behaviour, user friction and remaining failures in that skill's implementation issue.
+4. Remove a temporary test installation when no longer needed. Git commits and PR updates **do not** update the installed ChatGPT copy automatically.
 
 For Codex and Claude Code, prefer repository-local skill directories (and host-specific mirrors or symlinks as needed) in an isolated checkout instead of global installation. Review the platform's supported skill discovery locations before assuming a skill will auto-activate.
 
