@@ -112,6 +112,14 @@ Before asking a question, check whether it is already answered in the project, c
 | Goal, user preference, domain policy, materially different trade-offs, or consequential/irreversible action | Ask a **focused** question, show meaningful options and explain the recommendation; obtain necessary permission before the action. |
 | Missing evidence or uncertain assumptions | Research when possible; otherwise disclose the assumption and ask only if it materially affects the outcome. |
 
+### APS Decision Summary when no project storage is available
+
+**Small common APS output convention, not a separate skill or a new storage requirement.** If a clarification reaches a useful milestone or ends, and there is no writable authoritative project source, provide a compact, copyable Markdown summary **in the chat**. Do not require or create Git, GitHub, a repository, an issue, or a local file just to capture it.
+
+Use only nonempty, relevant sections in the user's language: **Goal**, **Decided** (material decisions, distinguishing user-confirmed from agent-selected when important), **Open** (still consequential), and **Next step**. Include brief rationale or revisit conditions only where helpful. Do not emit this after every reply, and do not duplicate the conversation. State the **actual** persistence status explicitly, for example: *Only documented in this chat; not saved to a project source*. If a source exists but writing is unavailable or forbidden, identify that limit; never imply that a chat message was saved externally.
+
+Where a project already has an authoritative decision source, **use its established Org/Markdown, local filesystem, GitHub Issue or other workflow instead**, if authorised. A compact decision summary is **not** a session handoff; `aps-handoff` adds work state, evidence, references and resumption details. The operational use of this shared convention starts with `aps-clarify`; other APS skills may reuse it only where useful.
+
 ### Reporting and retaining autonomous decisions
 
 A meaningful decision is **not complete** just because the agent made it. For every autonomous choice that may influence future work:
