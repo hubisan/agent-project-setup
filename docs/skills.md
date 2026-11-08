@@ -68,6 +68,12 @@ Retain existing project conventions and meaningful cross-links. When splitting i
 
 Do not automatically split stakeholder mapping, risk assessment, requirements or prototyping into additional skills. These are methods the phase skill can select as needed. Introduce a specialised skill only when actual work demonstrates a repeated, substantial workflow.
 
+### Stakeholder analysis and questionnaires
+
+Within **`aps-analyze` / Understand**, identify relevant stakeholders when people have different needs, relevant expertise, influence or decision authority. Reuse known roles; distinguish evidence from assumptions. Understand what each perspective contributes, identify actual conflicts and the **specific missing information** needed for the next decision. Do not require a formal stakeholder matrix for a small project.
+
+A focused interview or asynchronous questionnaire is an optional **elicitation method**. Use `aps-questionnaire` when the missing facts or decisions must come from **another stakeholder or knowledge holder**: identify recipient and question gap, write a concise questionnaire, and later integrate confirmed replies into the authoritative project material. This differs from `aps-clarify` (choices with the current user) and `aps-handoff` (session transfer). Do not ask the user to guess facts another person owns.
+
 ### Domain modeling as a method, not an IT-only phase
 
 Within **`aps-analyze` / Understand**, develop a lightweight **conceptual domain model** when the project's subject has ambiguous terms, interacting concepts, or important rules. This is useful for research, knowledge bases, organisational processes and personal projects as well as software.
@@ -91,6 +97,7 @@ Reuse and refine the existing project vocabulary and document only meaningful di
 | Skill candidate | Purpose | Existing issue |
 | --- | --- | --- |
 | `aps-clarify` | Question any scope (project, stakeholder, assumption, single requirement), explain recommended choices and capture the decision | [#14](https://github.com/hubisan/agent-project-setup/issues/14) (re-scope candidate) |
+| `aps-questionnaire` | Prepare focused questions for another stakeholder to obtain missing facts or decisions; distinct from current-user clarification and session handoff | [#25](https://github.com/hubisan/agent-project-setup/issues/25) |
 | `aps-brainstorm` | Expand the idea space using prompts, divergent perspectives and combinations; organise afterwards without premature evaluation | Not yet assigned |
 | `aps-research` | Seek and compare evidence, distinguish source claims from hypotheses and note uncertainty | [#16](https://github.com/hubisan/agent-project-setup/issues/16) |
 | `aps-review` | Review actual work status, relevant blockers, commitments and next actions at any point | [#19](https://github.com/hubisan/agent-project-setup/issues/19) |
