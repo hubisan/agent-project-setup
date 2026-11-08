@@ -18,3 +18,13 @@ This public repository develops provider-neutral project guidance. It is not a t
 ## Language
 
 Write agent instructions, skill definitions, setup docs and tests in English. Speak to the user in their preferred language. Preserve the existing language, terminology and style of each project's content. Never translate project content without an explicit request. Keep the original German v2 specification and decision register unchanged as historical source documents.
+
+## Agent takeover and task execution
+
+1. Read this file and `README.md`. Use `docs/phases.md` for phase routing, `docs/skills.md` for skill scope, and GitHub issue #11 for the current delivery order.
+2. Treat the current catalog and issue-specific accepted decisions as authoritative over historical `docs/spec-v2/` snapshots. Existing implementation issues can have inherited names: follow the explicit scope-alignment notes, not the old heading.
+3. Select **one ready issue** from #11, inspect its full body and linked PR/branch, and verify actual file/PR state before claiming work is done. Never infer completion from an issue's description or unchecked acceptance criteria.
+4. Make a scoped branch/PR with tests appropriate to the change; do not merge unfinished skills or mark a candidate accepted without the issue's pilot, review and user-acceptance gates.
+5. Report what was actually changed, tested, committed, pushed and still blocked. On agent/session transfer use a specific handoff issue when that workflow is available; otherwise supply an explicitly unpublished summary and exact refs.
+
+`AGENTS.md` is the shared rule source. Provider adapters such as `CLAUDE.md` should point here rather than duplicate these rules.

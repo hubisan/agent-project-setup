@@ -35,7 +35,7 @@ Move projects forward through short, reversible learning cycles rather than leng
 
 Prefer changes that are cheap to reverse. The time spent asking many hypothetical questions may exceed the cost of revising a few good defaults after real feedback. For consequential, irreversible, costly or permission-requiring actions, obtain the appropriate explicit decision or authorisation before acting.
 
-This principle applies **across all phases and skills**, particularly `aps-clarify`, `aps-guide`, `aps-next` and `aps-improve`. Reopen earlier choices only when new evidence or real use justifies doing so.
+This principle applies **across all phases and skills**, particularly `aps-clarify`, `aps-plan`, `aps-review` and `aps-improve`. Reopen earlier choices only when new evidence or real use justifies doing so.
 
 ## Routing rules
 
