@@ -2,7 +2,7 @@
 
 **Status: design candidates, not installed or accepted skills.** Every original skill uses the `aps-` prefix (from `agent-project-setup`), including its directory, frontmatter name, invocation and references. The catalog describes **responsibilities**; it is not an instruction to build every candidate.
 
-See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). The existing implementation issues #12–#20 predate this revised taxonomy and **will need review before their titles/scopes are changed**. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
+See [six project phases](phases.md) and [roadmap issue #11](https://github.com/hubisan/agent-project-setup/issues/11). Legacy implementation issues #12–#20 originated before the current taxonomy. Their names and scoped alignment notes are maintained alongside the roadmap in [#11](https://github.com/hubisan/agent-project-setup/issues/11); check the issue's stated scope and release gates before implementation. Additional skills get separate issues only if real use warrants them. These links are ordinary issue references, not native GitHub sub-issues.
 
 ## Skill availability and platform routing (user-confirmed 2026-10-31)
 
@@ -59,9 +59,9 @@ Retain existing project conventions and meaningful cross-links. When splitting i
 
 | Phase | Skill candidate | Responsibility | Expected outcome | Existing issue |
 | --- | --- | --- | --- | --- |
-| 1. Clarify | `aps-frame` | Clarify purpose, desired outcome, success indicators and boundaries without a heavyweight vision ceremony | Small project brief | [#15](https://github.com/hubisan/agent-project-setup/issues/15) (re-scope candidate) |
+| 1. Clarify | `aps-frame` | Clarify purpose, desired outcome, success indicators and boundaries without a heavyweight vision ceremony | Small project brief | [#15](https://github.com/hubisan/agent-project-setup/issues/15) (scope-aligned candidate) |
 | 2. Understand | `aps-analyze` | Inspect the current situation, stakeholders, environment, constraints, needs and requirements at an appropriate depth | Situation and actionable requirements | Not yet assigned |
-| 3. Design | `aps-design` | Explore, compare and refine options, including AI + files, existing tools, process changes or custom software | Justified testable solution | [#17](https://github.com/hubisan/agent-project-setup/issues/17) (re-scope candidate) |
+| 3. Design | `aps-design` | Explore, compare and refine options, including AI + files, existing tools, process changes or custom software | Justified testable solution | [#17](https://github.com/hubisan/agent-project-setup/issues/17) (scope-aligned candidate) |
 | 4. Plan | `aps-plan` | Organise the selected work, dependencies, priorities and next actions | Executable plan appropriate to project size | [#18](https://github.com/hubisan/agent-project-setup/issues/18) |
 | 5. Execute | **No generic skill** | Perform real work or experiments with the relevant available tools and domain-specific methods | Actual results, not only planned NEXT actions | Not applicable |
 | 6. Review | `aps-validate` | Test the outcome against requirements, success indicators and agreed acceptance | Findings, gaps and acceptance decision | Not yet assigned |
