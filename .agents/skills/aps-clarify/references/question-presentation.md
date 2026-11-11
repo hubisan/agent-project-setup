@@ -2,6 +2,8 @@
 
 Shared presentation rules for APS questioning workflows, including a future `aps-brainstorm`. Reuse this guidance rather than redefining question formatting in every skill; it does not require invoking a separate form skill.
 
+For ChatGPT interactive forms, see [the ChatGPT native form template](../assets/chatgpt-form-template.md) for the tested rendering pattern and shared answer serialization. Do not mistake internal radio values for visible A/B/C labels. This reference remains host-neutral when native controls are unavailable.
+
 ## Choose the presentation
 
 - Do not repeat a long introduction both before and inside a question. Keep setup proportional to the decision, and ensure options are genuinely distinct rather than overlapping directions.
